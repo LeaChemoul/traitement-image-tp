@@ -21,9 +21,7 @@ printf("> En dessous de quelle distance (entre la personne et l’écran) une perso
 taille_pixel_mm = [487/1920, 274/1080];
 printf("Taille d'un pixel sur un écran 22 pouces HD 1080 : %fx%f mm\n", taille_pixel_mm(1), taille_pixel_mm(2));
 
-# distance_min = sqrt(((taille_pixel_mm(1)/10)^2)/(2 * (1 - cos(1/60))));
-a_squared = (taille_pixel_mm(1)/10)^2;
-ratio = a_squared / (1 - cosd(1/60))
+distance_min = sqrt(((taille_pixel_mm(1)/10)^2)/(2 * (1 - cosd(1/60))));
 printf("Distance minimale : %f cm\n\n", distance_min);
 
 #> Quelle est la définition de cette image?
@@ -125,10 +123,59 @@ colorbar();
 
 #> Pour chacune des 2 images sous échantillonnées créées, sur échantillonner là (en utilisant interp2 et meshgrid) afin d’obtenir une image de la taille d’origine. Commenter (se rappeler du cours du traitement du signal, Shannon par exemple).
 
-cameraman_se2 = interp2(cameraman_e2, 2);
+cameraman_se2 = interp2(cameraman_e2);
+%{
 size(cameraman_se2)
 figure;
 imshow(cameraman, map);
 figure;
 imshow(cameraman_se2, map);
 colorbar();
+%}
+
+# 4- Espaces colorimétriques
+
+%{
+[pool, map, alpha] = imread("data/pool.jpg");
+imshow(pool, map);
+colorbar();
+figure;
+%}
+
+% Extract color channels.
+redChannel = pool(:,:,1);
+greenChannel = pool(:,:,2);
+blueChannel = pool(:,:,3);
+blackChannel = zeros(size(pool, 1), size(pool, 2), 'uint8');
+% Create color versions of the individual color channels.
+just_red = cat(3, redChannel, blackChannel, blackChannel);
+just_green = cat(3, blackChannel, greenChannel, blackChannel);
+just_blue = cat(3, blackChannel, blackChannel, blueChannel);
+gray_red = rgb2gray(just_red);
+gray_green = rgb2gray(just_green);
+gray_blue = rgb2gray(just_blue);
+
+subplot(3, 2, 1);
+imshow(just_red);
+colorbar();
+title('Red Channel')
+subplot(3, 2, 2);
+imshow(gray_red)
+colorbar();
+title('Red gray')
+subplot(3, 2, 3);
+imshow(just_blue);
+colorbar();
+title('Blue Channel')
+subplot(3, 2, 4);
+imshow(gray_blue);
+colorbar();
+title('Blue gray')
+subplot(3, 2, 5);
+imshow(just_green);
+colorbar();
+title('Green Cannel')
+subplot(3, 2, 6);
+imshow(gray_green);
+colorbar();
+title('Green gray')

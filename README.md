@@ -125,3 +125,24 @@ cameraman_e4 = cameraman(1:4:size(cameraman)(1), 1:4:size(cameraman)(2));
 // TODO Insert image
 
 > Pour chacune des 2 images sous échantillonnées créées, sur échantillonner là (en utilisant interp2 et meshgrid) afin d’obtenir une image de la taille d’origine. Commenter (se rappeler du cours du traitement du signal, Shannon par exemple).
+
+```matlab
+cameraman_se2 = interp2(cameraman_e2);
+```
+
+Avec interp2 on va completer les élements manquants en fonction de leur emplacement. 
+Il va renvoyer les valeurs interpolées dans les éléments de Z.
+
+**Remarques** Théorème de Shannon
+
+![](output/cameraman-imshow.png)
+![](output/cameraman-sur-ech.png)
+
+
+### 3 - Espaces colorimétriques
+
+//images a changer
+![](output/billard-original.png)
+![](output/billard-gray.png)
+
+
