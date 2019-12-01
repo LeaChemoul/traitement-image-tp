@@ -24,6 +24,41 @@ printf("Taille d'un pixel sur un écran 22 pouces HD 1080 : %fx%f mm\n", taille_p
 distance_min = sqrt(((taille_pixel_mm(1)/10)^2)/(2 * (1 - cosd(1/60))));
 printf("Distance minimale : %f cm\n\n", distance_min);
 
+#Ultra HD = 3840*2160
+ultrahd1 = 3840;
+ultrahd2 = 2160;
+
+# HD 1080
+hd1 = 1920;
+hd2 = 1080;
+
+#taille écran 55 pouces
+taille_ecran1_1 = 1218;
+taille_ecran1_2 = 685;
+taille_pixel_mm1_1 = [taille_ecran1_1/ultrahd1, taille_ecran1_2/ultrahd2];
+taille_pixel_mm1_2 = [taille_ecran1_1/hd1, taille_ecran1_2/hd2];
+
+#taille écran 50 pouces
+taille_ecran2_1 = 1107;
+taille_ecran2_2 = 623;
+taille_pixel_mm2_1 = [taille_ecran2_1/ultrahd1, taille_ecran2_2/ultrahd2];
+taille_pixel_mm2_2 = [taille_ecran2_1/hd1, taille_ecran2_2/hd2];
+
+#Calcul des distances minimales
+
+distance_min2_1 = sqrt(((taille_pixel_mm2_1(1)/10)^2)/(2 * (1 - cosd(1/60))));
+distance_min2_2 = sqrt(((taille_pixel_mm2_2(1)/10)^2)/(2 * (1 - cosd(1/60))));
+printf("Distance minimale écran 50 pouces HD : %f cm\n\n", distance_min2_2);
+printf("Distance minimale écran 50 pouces Ultra HD : %f cm\n\n", distance_min2_1);
+
+distance_min1_1 = sqrt(((taille_pixel_mm1_1(1)/10)^2)/(2 * (1 - cosd(1/60))));
+distance_min1_2 = sqrt(((taille_pixel_mm1_2(1)/10)^2)/(2 * (1 - cosd(1/60))));
+printf("Distance minimale écran 55 pouces HD : %f cm\n\n", distance_min1_2);
+printf("Distance minimale écran 55 pouces Ultra HD : %f cm\n\n", distance_min1_1);
+
+printf("Entre 50 et 55 pouces, il est necessaire de passer en Ultra HD afin de bien distinguer un écran situé à 2m\n");
+
+printf("\nMANDRILL.BMP\n\n")
 #> Quelle est la définition de cette image?
 
 # Install image package
@@ -135,8 +170,9 @@ colorbar();
 
 # 4- Espaces colorimétriques
 
-%{
+%RGB color
 [pool, map, alpha] = imread("data/pool.jpg");
+%{
 imshow(pool, map);
 colorbar();
 figure;
@@ -147,6 +183,7 @@ redChannel = pool(:,:,1);
 greenChannel = pool(:,:,2);
 blueChannel = pool(:,:,3);
 blackChannel = zeros(size(pool, 1), size(pool, 2), 'uint8');
+
 % Create color versions of the individual color channels.
 just_red = cat(3, redChannel, blackChannel, blackChannel);
 just_green = cat(3, blackChannel, greenChannel, blackChannel);
@@ -179,3 +216,16 @@ subplot(3, 2, 6);
 imshow(gray_green);
 colorbar();
 title('Green gray')
+
+%YUV color
+
+YCBCR = rgb2ycbcr(pool);
+
+redChannelYuv = rgb2ycbcr(redChannel)
+blackChannelYuv = rgb2ycbcr(blackChannel)
+just_red_yuv = cat(3, redChannelYuv, blackChannelYuv, blackChannelYuv);
+
+subplot(3, 2, 1);
+imshow(just_red_yuv);
+colorbar();
+title('Red YUV Channel')
