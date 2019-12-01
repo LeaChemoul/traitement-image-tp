@@ -88,52 +88,35 @@ printf("Taille de l'image sur le disque : %d bytes\n\n", info.FileSize);
 #> Afficher l’image en n’utilisant que 128, 64, 32, 16, 8, 4 et 2 niveaux de gris et observer la dégradation visuelle de l’image en cas de sous-quantification trop importante.
 
 cameraman_128 = round(cameraman/2);
-%{
-figure;
-imshow(cameraman_128, map);
-colorbar();
-%}
-
 cameraman_64 = round(cameraman_128./2);
-%{
-figure;
-imshow(cameraman_64, map);
-colorbar();
-%}
-
 cameraman_32 = round(cameraman_64./2);
-%{
-figure;
-imshow(cameraman_32, map);
-colorbar();
-%}
-
 cameraman_16 = round(cameraman_32./2);
-%{
-figure;
-imshow(cameraman_16, map);
-colorbar();
-%}
-
 cameraman_8 = round(cameraman_16./2);
-%{
-figure;
-imshow(cameraman_8, map);
-colorbar();
-%}
-
 cameraman_4 = round(cameraman_8./2);
-%{
-figure;
-imshow(cameraman_4, map);
-colorbar();
-%}
-
 cameraman_2 = round(cameraman_4./2);
 %{
-figure;
+subplot(4, 2, 1);
+imshow(cameraman_128, map);
+colorbar();
+subplot(4, 2, 2);
+imshow(cameraman_64, map);
+colorbar();
+subplot(4, 2, 3);
+imshow(cameraman_32, map);
+colorbar();
+subplot(4, 2, 4);
+imshow(cameraman_16, map);
+colorbar();
+subplot(4, 2, 5);
+imshow(cameraman_8, map);
+colorbar();
+subplot(4, 2, 6);
+imshow(cameraman_4, map);
+colorbar();
+subplot(4, 2, 7);
 imshow(cameraman_2, map);
 colorbar();
+figure;
 %}
 
 # 3 - Échantillonnage
@@ -159,14 +142,30 @@ colorbar();
 #> Pour chacune des 2 images sous échantillonnées créées, sur échantillonner là (en utilisant interp2 et meshgrid) afin d’obtenir une image de la taille d’origine. Commenter (se rappeler du cours du traitement du signal, Shannon par exemple).
 
 cameraman_se2 = interp2(cameraman_e2);
-%{
 size(cameraman_se2)
+subplot(1, 3, 1);
+imshow(cameraman);
+title('Original')
+subplot(1, 3, 2);
+imshow(cameraman_e2);
+title('Sous echantillonage 2')
+subplot(1, 3, 3);
+imshow(cameraman_se2);
+title('Sur echantillonage 2')
 figure;
-imshow(cameraman, map);
+
+cameraman_se4 = interp2(cameraman_e4);
+size(cameraman_se4)
+subplot(1, 3, 1);
+imshow(cameraman);
+title('Original')
+subplot(1, 3, 2);
+imshow(cameraman_e4);
+title('Sous echantillonage 4')
+subplot(1, 3, 3);
+imshow(cameraman_se4);
+title('Sur echantillonage 4')
 figure;
-imshow(cameraman_se2, map);
-colorbar();
-%}
 
 # 4- Espaces colorimétriques
 
@@ -192,6 +191,7 @@ gray_red = rgb2gray(just_red);
 gray_green = rgb2gray(just_green);
 gray_blue = rgb2gray(just_blue);
 
+%{
 subplot(3, 2, 1);
 imshow(just_red);
 colorbar();
@@ -216,16 +216,6 @@ subplot(3, 2, 6);
 imshow(gray_green);
 colorbar();
 title('Green gray')
+%}
 
 %YUV color
-
-YCBCR = rgb2ycbcr(pool);
-
-redChannelYuv = rgb2ycbcr(redChannel)
-blackChannelYuv = rgb2ycbcr(blackChannel)
-just_red_yuv = cat(3, redChannelYuv, blackChannelYuv, blackChannelYuv);
-
-subplot(3, 2, 1);
-imshow(just_red_yuv);
-colorbar();
-title('Red YUV Channel')
