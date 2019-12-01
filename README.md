@@ -159,6 +159,21 @@ Il va renvoyer les valeurs interpolées dans les éléments de Z.
 
 **Remarques** Théorème de Shannon
 
+L'information périodique contenue dans une image peut être assimilée à une fonction fréquentielle
+de période `T0`. 
+Lorsqu'on a 2 niveaux de gris, alors pour une période donnée on aura deux informations :
+- la crête positive correpondant au blanc
+- la crête négative correspondant au noir
+
+La période d'échantillonnage `Te` doit être au moins deux fois plus petite que celle du signal `T0`
+
+Lorsque cela n'est pas le cas, on aura une image moins representative de l'image initiale.
+Le phénomène d'aliasing (recouvrement de signal) va se produire lorsque la fréquence du signal est
+supérieure au double de la fréquence d'échantillonnage. 
+
+C'est ce qu'on observe dans notre cas lorsqu'on sous-échantillone l'image.
+En effet, l'image est echantillonnée sans prendre en compte le critère de Shannon puis q'uon la reconstitue, on a un phénomène de recouvrement (escaliers).
+
 ![](output/cameraman-imshow.png)
 ![](output/cameraman-sur-ech.png)
 
