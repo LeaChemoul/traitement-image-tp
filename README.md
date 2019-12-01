@@ -1,7 +1,7 @@
 # Traitement d'Image
 
 > Auteurs :
-> 
+>
 > * Léa CHEMOUL
 > * Valentin Berger
 
@@ -47,6 +47,30 @@ $a^2 = 2 d^2 - 2 d^2 \cos(\frac{1}{60}) \quad \text{ avec } d \text{ étant la d
 a^2 = 2 d^2 (1 - \cos(\frac{1}{60}))\\
 \Leftrightarrow d^2 = 2 \frac{a^2}{1 - \cos(\frac{1}{60})}\\
 \Leftrightarrow d = \sqrt{\frac{a^2}{2 (1 - \cos(\frac{1}{60}))}}$
+
+> Soit une personne souhaitant acheter un écran de télévision, qui est placé à 2m de son canapé.
+Cette personne tient absolument à avoir une définition Ultra HD. À partir de quelle taille
+d’écran (parmi celles proposées), cette résolution devient-elle distinguable d’une définition HD
+1080?
+
+Dans un premier temps on suppose que nous avons un écran HD de 50 pouces, puis de 55 pouces.
+
+```
+Distance minimale écran 50 pouces HD : 198.207588 cm
+
+Distance minimale écran 55 pouces HD : 218.082062 cm
+```
+
+On constate que entre 50 et 55 pouces cette définition n'est plus suffisante pour une sitance de plus de 200cm = 2m.
+
+```
+Distance minimale écran 50 pouces Ultra HD : 99.103794 cm
+
+Distance minimale écran 55 pouces Ultra HD : 109.041031 cm
+```
+
+Cette fois-ci en passant à un écran Ultra HD la distance est correcte.
+Entre 50 et 55 pouces, il donc est necessaire de passer en Ultra HD afin de bien distinguer un écran situé à 2m
 
 > Quelle est la définition de cette image?
 
@@ -130,7 +154,7 @@ cameraman_e4 = cameraman(1:4:size(cameraman)(1), 1:4:size(cameraman)(2));
 cameraman_se2 = interp2(cameraman_e2);
 ```
 
-Avec interp2 on va completer les élements manquants en fonction de leur emplacement. 
+Avec interp2 on va completer les élements manquants en fonction de leur emplacement.
 Il va renvoyer les valeurs interpolées dans les éléments de Z.
 
 **Remarques** Théorème de Shannon
@@ -144,5 +168,3 @@ Il va renvoyer les valeurs interpolées dans les éléments de Z.
 //images a changer
 ![](output/billard-original.png)
 ![](output/billard-gray.png)
-
-
