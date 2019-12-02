@@ -1,5 +1,7 @@
 # Traitement d'Image
 
+pkg load image 
+
 # TP1
 
 # 1 - Définitions
@@ -141,7 +143,12 @@ colorbar();
 
 #> Pour chacune des 2 images sous échantillonnées créées, sur échantillonner là (en utilisant interp2 et meshgrid) afin d’obtenir une image de la taille d’origine. Commenter (se rappeler du cours du traitement du signal, Shannon par exemple).
 
-cameraman_se2 = interp2(cameraman_e2);
+size(cameraman_e2)
+[X, Y] = meshgrid(0:128);
+[Xq,Yq] = meshgrid(0:0.50:128);
+cameraman_se2 = interp2(X,Y,cameraman_e2,Xq,Yq);
+
+#cameraman_se2 = interp2(cameraman_e2);
 size(cameraman_se2)
 subplot(1, 3, 1);
 imshow(cameraman);
@@ -219,3 +226,5 @@ title('Green gray')
 %}
 
 %YUV color
+
+yuv = rgb2ycbcr(pool);
