@@ -23,9 +23,9 @@ for x = 1:size(chat_transp, 1)
 endfor
 %}
 
-r_filter = chat(:, :, 1) == 106;
-g_filter = chat(:, :, 2) == 182;
-b_filter = chat(:, :, 3) == 107;
+r_filter = (chat(:, :, 1) >= 106 - 10) & (chat(:, :, 1) <= 106 + 10);
+g_filter = (chat(:, :, 2) >= 182 - 30) & (chat(:, :, 2) <= 182 + 30);
+b_filter = (chat(:, :, 3) >= 107 - 20) & (chat(:, :, 3) <= 107 + 20);
 px_to_remove = r_filter & g_filter & b_filter;
 chat_r = chat(:, :, 1);
 chat_g = chat(:, :, 2);
