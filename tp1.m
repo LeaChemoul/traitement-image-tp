@@ -4,24 +4,24 @@ pkg load image
 
 # TP1
 
-# 1 - Définitions
+# 1 - Dï¿½finitions
 
-printf("> Quelle est la taille minimale entre 2 objets pour qu’ils soient distinguables à 30cm?\n");
+printf("> Quelle est la taille minimale entre 2 objets pour quï¿½ils soient distinguables ï¿½ 30cm?\n");
 
-# On utilise le théorème de Pythagore étendu (loi des cosinus)
+# On utilise le thï¿½orï¿½me de Pythagore ï¿½tendu (loi des cosinus)
 # $a^2 = b^2 + c^2 - 2 b c \cos(\alpha)$
 taille_min_cm = sqrt(30^2 * ( 2 - 2 * cosd(1/60)));
 printf("Taille minimale entre 2 objets : %f cm\n\n", taille_min_cm);
 
-printf("> Quelle est la taille d’un pixel d’un smarphone de 5 pouces avec une définition HD 720? Si ce smarphone est tenu à 30cm de l’œil, cette définition est-elle suffisante?\n");
+printf("> Quelle est la taille dï¿½un pixel dï¿½un smarphone de 5 pouces avec une dï¿½finition HD 720? Si ce smarphone est tenu ï¿½ 30cm de lï¿½ï¿½il, cette dï¿½finition est-elle suffisante?\n");
 
 taille_pixel_mm = [111/1280, 620/720];
 printf("Taille d'un pixel sur un smartphone 5 pouces HD 720 : %fx%f mm\n\n", taille_pixel_mm(1), taille_pixel_mm(2));
 
-printf("> En dessous de quelle distance (entre la personne et l’écran) une personne peut-elle distinguer les pixels d’un écran d’ordinateur de 22 pouces avec une définition HD 1080?\n");
+printf("> En dessous de quelle distance (entre la personne et lï¿½ï¿½cran) une personne peut-elle distinguer les pixels dï¿½un ï¿½cran dï¿½ordinateur de 22 pouces avec une dï¿½finition HD 1080?\n");
 
 taille_pixel_mm = [487/1920, 274/1080];
-printf("Taille d'un pixel sur un écran 22 pouces HD 1080 : %fx%f mm\n", taille_pixel_mm(1), taille_pixel_mm(2));
+printf("Taille d'un pixel sur un ï¿½cran 22 pouces HD 1080 : %fx%f mm\n", taille_pixel_mm(1), taille_pixel_mm(2));
 
 distance_min = sqrt(((taille_pixel_mm(1)/10)^2)/(2 * (1 - cosd(1/60))));
 printf("Distance minimale : %f cm\n\n", distance_min);
@@ -34,13 +34,13 @@ ultrahd2 = 2160;
 hd1 = 1920;
 hd2 = 1080;
 
-#taille écran 55 pouces
+#taille ï¿½cran 55 pouces
 taille_ecran1_1 = 1218;
 taille_ecran1_2 = 685;
 taille_pixel_mm1_1 = [taille_ecran1_1/ultrahd1, taille_ecran1_2/ultrahd2];
 taille_pixel_mm1_2 = [taille_ecran1_1/hd1, taille_ecran1_2/hd2];
 
-#taille écran 50 pouces
+#taille ï¿½cran 50 pouces
 taille_ecran2_1 = 1107;
 taille_ecran2_2 = 623;
 taille_pixel_mm2_1 = [taille_ecran2_1/ultrahd1, taille_ecran2_2/ultrahd2];
@@ -50,18 +50,18 @@ taille_pixel_mm2_2 = [taille_ecran2_1/hd1, taille_ecran2_2/hd2];
 
 distance_min2_1 = sqrt(((taille_pixel_mm2_1(1)/10)^2)/(2 * (1 - cosd(1/60))));
 distance_min2_2 = sqrt(((taille_pixel_mm2_2(1)/10)^2)/(2 * (1 - cosd(1/60))));
-printf("Distance minimale écran 50 pouces HD : %f cm\n\n", distance_min2_2);
-printf("Distance minimale écran 50 pouces Ultra HD : %f cm\n\n", distance_min2_1);
+printf("Distance minimale ï¿½cran 50 pouces HD : %f cm\n\n", distance_min2_2);
+printf("Distance minimale ï¿½cran 50 pouces Ultra HD : %f cm\n\n", distance_min2_1);
 
 distance_min1_1 = sqrt(((taille_pixel_mm1_1(1)/10)^2)/(2 * (1 - cosd(1/60))));
 distance_min1_2 = sqrt(((taille_pixel_mm1_2(1)/10)^2)/(2 * (1 - cosd(1/60))));
-printf("Distance minimale écran 55 pouces HD : %f cm\n\n", distance_min1_2);
-printf("Distance minimale écran 55 pouces Ultra HD : %f cm\n\n", distance_min1_1);
+printf("Distance minimale ï¿½cran 55 pouces HD : %f cm\n\n", distance_min1_2);
+printf("Distance minimale ï¿½cran 55 pouces Ultra HD : %f cm\n\n", distance_min1_1);
 
-printf("Entre 50 et 55 pouces, il est necessaire de passer en Ultra HD afin de bien distinguer un écran situé à 2m\n");
+printf("Entre 50 et 55 pouces, il est necessaire de passer en Ultra HD afin de bien distinguer un ï¿½cran situï¿½ ï¿½ 2m\n");
 
 printf("\nMANDRILL.BMP\n\n")
-#> Quelle est la définition de cette image?
+#> Quelle est la dï¿½finition de cette image?
 
 # Install image package
 # pkg install image-2.10.0.tar.gz
@@ -71,23 +71,34 @@ printf("\nMANDRILL.BMP\n\n")
 dimen = size(cameraman);
 printf("Dimension de l'image: %dx%d pixels\n\n", dimen(1), dimen(2));
 
-#> Quelle est sa taille théorique sur le disque? Comparer avec la taille réelle et commenter.
+#> Quelle est sa taille thï¿½orique sur le disque? Comparer avec la taille rï¿½elle et commenter.
 
-printf("La taille théorique est de %d * %d * %d = %d bytes\n", dimen(1), dimen(2), 3, dimen(1) * dimen(2) * 3);
+printf("La taille thï¿½orique est de %d * %d * %d = %d bytes\n", dimen(1), dimen(2), 3, dimen(1) * dimen(2) * 3);
 
 info = imfinfo("data/cameraman.jpg");
 printf("Taille de l'image sur le disque : %d bytes\n\n", info.FileSize);
 
 # 2 - Quantification
 
-#> Ouvrir le fichier cameraman.jpg et l’afficher. Regarder les fonctions imread, imshow, image, imagesc et colorbar. Sur combien de bits sont représentés les niveaux de gris?
+#> Ouvrir le fichier cameraman.jpg et lï¿½afficher. Regarder les fonctions imread, imshow, image, imagesc et colorbar. Sur combien de bits sont reprï¿½sentï¿½s les niveaux de gris?
 
-#imshow(cameraman, map);
-#image(cameraman);
-#imagesc(cameraman);
-#colorbar();
+f = figure;
+imshow(cameraman, map);
+colorbar();
+saveas(f, "output/cameraman-imshow.png");
 
-#> Afficher l’image en n’utilisant que 128, 64, 32, 16, 8, 4 et 2 niveaux de gris et observer la dégradation visuelle de l’image en cas de sous-quantification trop importante.
+f = figure;
+image(cameraman);
+colorbar();
+saveas(f, "output/cameraman-image.png");
+
+f = figure;
+imagesc(cameraman);
+colorbar();
+saveas(f, "output/cameraman-imagesc.png");
+
+
+#> Afficher lï¿½image en nï¿½utilisant que 128, 64, 32, 16, 8, 4 et 2 niveaux de gris et observer la dï¿½gradation visuelle de lï¿½image en cas de sous-quantification trop importante.
 
 cameraman_128 = round(cameraman/2);
 cameraman_64 = round(cameraman_128./2);
@@ -96,7 +107,8 @@ cameraman_16 = round(cameraman_32./2);
 cameraman_8 = round(cameraman_16./2);
 cameraman_4 = round(cameraman_8./2);
 cameraman_2 = round(cameraman_4./2);
-%{
+
+figure;
 subplot(4, 2, 1);
 imshow(cameraman_128, map);
 colorbar();
@@ -115,33 +127,30 @@ colorbar();
 subplot(4, 2, 6);
 imshow(cameraman_4, map);
 colorbar();
-subplot(4, 2, 7);
+f = subplot(4, 2, 7);
 imshow(cameraman_2, map);
 colorbar();
-figure;
-%}
+saveas(f, "output/cameraman-niveaux-gris.png");
 
-# 3 - Échantillonnage
+# 3 - ï¿½chantillonnage
 
-#> En utilisant toujours cameraman.jpg, créer en une autre sous-échantillonner avec 2 fois moins de lignes et colonnes.
+#> En utilisant toujours cameraman.jpg, crï¿½er en une autre sous-ï¿½chantillonner avec 2 fois moins de lignes et colonnes.
 
 cameraman_e2 = cameraman(1:2:size(cameraman)(1), 1:2:size(cameraman)(2));
-%{
-figure;
+f = figure;
 imshow(cameraman_e2, map);
 colorbar();
-%}
+saveas(f, "output/cameraman-sous-ech2.png");
 
-#> Même question mais avec 4 fois moins de lignes et de colonnes.
+#> Mï¿½me question mais avec 4 fois moins de lignes et de colonnes.
 
 cameraman_e4 = cameraman(1:4:size(cameraman)(1), 1:4:size(cameraman)(2));
-%{
-figure;
+f = figure;
 imshow(cameraman_e4, map);
 colorbar();
-%}
+saveas(f, "output/cameraman-sous-ech4.png");
 
-#> Pour chacune des 2 images sous échantillonnées créées, sur échantillonner là (en utilisant interp2 et meshgrid) afin d’obtenir une image de la taille d’origine. Commenter (se rappeler du cours du traitement du signal, Shannon par exemple).
+#> Pour chacune des 2 images sous ï¿½chantillonnï¿½es crï¿½ï¿½es, sur ï¿½chantillonner lï¿½ (en utilisant interp2 et meshgrid) afin dï¿½obtenir une image de la taille dï¿½origine. Commenter (se rappeler du cours du traitement du signal, Shannon par exemple).
 
 
 [Xq,Yq] = meshgrid(1:0.5:128.5);
@@ -152,9 +161,11 @@ title('Original')
 subplot(1, 3, 2);
 imshow(cameraman_e2);
 title('Sous echantillonage 2')
-subplot(1, 3, 3);
+f = subplot(1, 3, 3);
 imshow(cameraman_se2);
 title('Sur echantillonage 2')
+saveas(f, "output/cameraman-sur-ech2.png");
+
 figure;
 
 [Xq,Yq] = meshgrid(1:0.5:64.5);
@@ -165,20 +176,19 @@ title('Original')
 subplot(1, 3, 2);
 imshow(cameraman_e4);
 title('Sous echantillonage 4')
-subplot(1, 3, 3);
+f = subplot(1, 3, 3);
 imshow(cameraman_se4);
 title('Sur echantillonage 4')
-figure;
+saveas(f, "output/cameraman-sur-ech4.png");
 
-# 4- Espaces colorimétriques
+# 4- Espaces colorimï¿½triques
 
 %RGB color
 [pool, map, alpha] = imread("data/pool.jpg");
-%{
+f = figure;
 imshow(pool, map);
 colorbar();
-figure;
-%}
+saveas(f, "output/pool-imshow.png");
 
 % Extract color channels.
 redChannel = pool(:,:,1);
@@ -194,7 +204,7 @@ gray_red = rgb2gray(just_red);
 gray_green = rgb2gray(just_green);
 gray_blue = rgb2gray(just_blue);
 
-%{
+figure;
 subplot(3, 2, 1);
 imshow(just_red);
 colorbar();
@@ -216,11 +226,14 @@ imshow(just_green);
 colorbar();
 title('Green Cannel')
 subplot(3, 2, 6);
-imshow(gray_green);
+f = imshow(gray_green);
 colorbar();
 title('Green gray')
-%}
+saveas(f, "output/pool-channels.png");
 
 %YUV color
 
 yuv = rgb2ycbcr(pool);
+
+% Comment the following line to keep the images displayed during execution.
+close all hidden;
