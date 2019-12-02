@@ -22,12 +22,25 @@ for x = 1:size(chat_transp, 1)
 	endfor
 endfor
 %}
-chat_transp(chat_transp(:, :, 1) == 106 && chat_transp(:, :, 2) == 182 && chat_transp(:, :, 3) == 107) = [255 255 255];
+
+r_filter = chat(:, :, 1) == 106;
+g_filter = chat(:, :, 2) == 182;
+b_filter = chat(:, :, 3) == 107;
+px_to_remove = r_filter & g_filter & b_filter;
+chat_r = chat(:, :, 1);
+chat_g = chat(:, :, 2);
+chat_b = chat(:, :, 3);
+chat_r(px_to_remove) = 255;
+chat_g(px_to_remove) = 255;
+chat_b(px_to_remove) = 255;
+chat_transp(:, :, 1) = chat_r;
+chat_transp(:, :, 2) = chat_g;
+chat_transp(:, :, 3) = chat_b;
+%chat_transp(px_to_remove) = 0;
+
 f = figure;
 imshow(chat_transp);
 title("Chat sans fond vert");
-
-
 
 # 2 - Segmentation
 [noyaux, map, alpha] = imread("data/noyaux.jpeg");
