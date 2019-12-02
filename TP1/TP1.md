@@ -171,8 +171,9 @@ En effet, l'image est echantillonnée sans prendre en compte le critère de Shan
 ![](output/cameraman-sur-ech2.png)
 ![](output/cameraman-sur-ech4.png)
 
-### 3 - Espaces colorimétriques
+### 4 - Espaces colorimétriques
 
+//images a changer
 ![](output/pool-imshow.png)
 ![](output/pool-channels.png)
 ![](output/pool-channels-yuv.png)
@@ -189,4 +190,23 @@ La couleur affichée est en noir et blanc mais ilf aut garder en tête que nous 
 
 ![](output/pool-channels-hsv.png)
 
-<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+### 5 - 7 différences
+
+![](output/7differences-diff.png)
+
+Dans l'image ci-dessus, on peut voir dans la première ligne les deux images à comparer. Dans la ligne suivante, l'image située dans la première colonne montre la différence entre l'image 2 et l'image 1, avec une inversion du noir et du blanc :
+
+```matlab
+diff21 = max(err2 - err1, 0);
+diff21_r = 255 - diff21;
+```
+
+Enfin, l'image située dans la deuxième ligne et deuxième colonne est l'image 1 avec la différence calculée superposée sur le canal rouge :
+
+```matlab
+overlay(:, :, 1) = min(err1 + diff21, 255);
+overlay(:, :, 2) = err1;
+overlay(:, :, 3) = err1;
+```
+
+En comptant les éléments en rouge dans la dernière image, on peut compter 6 différences. La septième différence est le fil à coudre, trop fin pour être percu dans la différence.

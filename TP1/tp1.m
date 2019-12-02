@@ -261,6 +261,7 @@ UChannel = blueChannel - YChannel;
 VChannel = redChannel - YChannel;
 %}
 
+%{
 figure;
 subplot(2, 2, 1);
 imshow(pool_yuv);
@@ -279,6 +280,7 @@ imshow(VChannel);
 colorbar();
 title('V Channel')
 saveas(f, "output/pool-channels-yuv.png");
+%}
 
 %YUV color
 
@@ -289,6 +291,7 @@ HChannel = pool_hsv(:,:,1);
 SChannel = pool_hsv(:,:,2);
 VChannel = pool_hsv(:,:,3);
 
+%{
 figure;
 subplot(2, 2, 1);
 imshow(pool_hsv);
@@ -307,6 +310,34 @@ imshow(VChannel);
 colorbar();
 title('V Channel')
 saveas(f, "output/pool-channels-hsv.png");
+%}
+
+# 5 - 7 Différences
+
+[err1, map1, alpha1] = imread("data/erreurs_7_1.jpg");
+[err2, map2, alpha2] = imread("data/erreurs_7_2.jpg");
+
+diff21 = max(err2 - err1, 0);
+diff21_r = 255 - diff21;
+overlay(:, :, 1) = min(err1 + diff21, 255);
+overlay(:, :, 2) = err1;
+overlay(:, :, 3) = err1;
+
+figure;
+subplot(2, 2, 1);
+imshow(err1);
+title("7 Differences - 1");
+subplot(2, 2, 2);
+imshow(err2);
+title("7 Differences - 2");
+subplot(2, 2, 3);
+imshow(diff21_r);
+title("Difference entre 2 et 1");
+f = subplot(2, 2, 4);
+imshow(overlay);
+title("Superposition de l'image 1 avec la difference entre 2 et 1");
+set (gcf, "position", [0, 0, 1920, 1080]);
+saveas(f, "output/7differences-diff.png");
 
 % Comment the following line to keep the images displayed during execution.
 %close all hidden;
