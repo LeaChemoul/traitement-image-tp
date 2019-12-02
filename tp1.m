@@ -143,13 +143,9 @@ colorbar();
 
 #> Pour chacune des 2 images sous échantillonnées créées, sur échantillonner là (en utilisant interp2 et meshgrid) afin d’obtenir une image de la taille d’origine. Commenter (se rappeler du cours du traitement du signal, Shannon par exemple).
 
-size(cameraman_e2)
-[X, Y] = meshgrid(0:128);
-[Xq,Yq] = meshgrid(0:0.50:128);
-cameraman_se2 = interp2(X,Y,cameraman_e2,Xq,Yq);
 
-#cameraman_se2 = interp2(cameraman_e2);
-size(cameraman_se2)
+[Xq,Yq] = meshgrid(1:0.5:128.5);
+cameraman_se2 = interp2(cameraman_e2,Xq,Yq);size(cameraman_se2)
 subplot(1, 3, 1);
 imshow(cameraman);
 title('Original')
@@ -161,8 +157,8 @@ imshow(cameraman_se2);
 title('Sur echantillonage 2')
 figure;
 
-cameraman_se4 = interp2(cameraman_e4);
-size(cameraman_se4)
+[Xq,Yq] = meshgrid(1:0.5:64.5);
+cameraman_se4 = interp2(cameraman_e4,Xq,Yq);size(cameraman_se2)#size(cameraman_se4)
 subplot(1, 3, 1);
 imshow(cameraman);
 title('Original')
