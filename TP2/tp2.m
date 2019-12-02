@@ -2,9 +2,12 @@
 
 pkg load image 
 
-# TP1
+# TP2
 
 # 1 - Arbre à chats
+
+[chat, map, alpha] = imread("data/chat.jpg");
+[arbre, map2, alpha2] = imread("data/arbre.jpg");
 
 # 2 - Segmentation
 
