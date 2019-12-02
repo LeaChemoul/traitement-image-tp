@@ -183,7 +183,7 @@ Les valeurs plus lumineuses sur le channel U mettent en évidence la couleur ble
 Les valeurs plus lumineuses sur le channel V met en évidence la couleur rouge (chrominance r).
 L'image finale peut ensuite être reconstituée pixel par pixel à partir des 3 composantes : Y, Cb et Cr (Y, U et V);
 
-La couleur affichée est en noir et blanc mais ilf aut garder en tête que nous avons :
+La couleur affichée est en noir et blanc mais il faut garder en tête que nous avons :
 - Y = image noir et blanc (luminance)
 - U = image bleue / verte (chrominance Y – Bleu)
 - V = image jaune / rouge (chrominance Y – Rouge)

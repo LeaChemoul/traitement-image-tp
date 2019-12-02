@@ -13,7 +13,7 @@ chat_transp = chat;
 %chat_transp(:, :, 2) = 0;
 %{
 for x = 1:size(chat_transp, 1)
-	for y = 1:size(chat_transp, 2)
+    for y = 1:size(chat_transp, 2)
 		if chat_transp(x, y, 1) == 106 && chat_transp(x, y, 2) == 182 && chat_transp(x, y, 3) == 107
 			chat_transp(x, y, 1) = 255;
 			chat_transp(x, y, 2) = 255;
@@ -56,8 +56,9 @@ noyaux_bin = cell2mat(noyaux_bin);
 figure;
 subplot(2,1,1)
 imshow(noyaux)
-subplot(2,1,2)
+f = subplot(2,1,2)
 imshow(noyaux_bin);
+saveas(f, "output/noyaux_seg.png");
 
 # 3 - Dynamique
 
