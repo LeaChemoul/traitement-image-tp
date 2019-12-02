@@ -153,7 +153,7 @@ Il va renvoyer les valeurs interpolées dans les éléments de Z.
 **Remarques** Théorème de Shannon
 
 L'information périodique contenue dans une image peut être assimilée à une fonction fréquentielle
-de période `T0`. 
+de période `T0`.
 Lorsqu'on a 2 niveaux de gris, alors pour une période donnée on aura deux informations :
 - la crête positive correpondant au blanc
 - la crête négative correspondant au noir
@@ -162,7 +162,7 @@ La période d'échantillonnage `Te` doit être au moins deux fois plus petite qu
 
 Lorsque cela n'est pas le cas, on aura une image moins representative de l'image initiale.
 Le phénomène d'aliasing (recouvrement de signal) va se produire lorsque la fréquence du signal est
-supérieure au double de la fréquence d'échantillonnage. 
+supérieure au double de la fréquence d'échantillonnage.
 
 C'est ce qu'on observe dans notre cas lorsqu'on sous-échantillone l'image.
 En effet, l'image est echantillonnée sans prendre en compte le critère de Shannon puis q'uon la reconstitue, on a un phénomène de recouvrement (escaliers).
@@ -173,8 +173,20 @@ En effet, l'image est echantillonnée sans prendre en compte le critère de Shan
 
 ### 3 - Espaces colorimétriques
 
-//images a changer
 ![](output/pool-imshow.png)
 ![](output/pool-channels.png)
+![](output/pool-channels-yuv.png)
+
+On ajoute une information de chrominance (couleurs) au signal de luminance (noir et blanc) Y.
+Les valeurs plus lumineuses sur le channel U mettent en évidence la couleur bleu (chrominance b).
+Les valeurs plus lumineuses sur le channel V met en évidence la couleur rouge (chrominance r).
+L'image finale peut ensuite être reconstituée pixel par pixel à partir des 3 composantes : Y, Cb et Cr (Y, U et V);
+
+La couleur affichée est en noir et blanc mais ilf aut garder en tête que nous avons :
+- Y = image noir et blanc (luminance)
+- U = image bleue / verte (chrominance Y – Bleu)
+- V = image jaune / rouge (chrominance Y – Rouge)
+
+![](output/pool-channels-hsv.png)
 
 <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
