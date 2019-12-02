@@ -13,9 +13,7 @@
 
 On utilise le théorème de Pythagore généralisé :
 
-$a^2 = b^2 + c^2 - 2 b c \cos(\alpha)\\
-= 30^2 + 30^2 - 2 \cdot 30 \cdot 30 \cdot cos(\frac{1}{60})\\
-= 0.008727 \text{ cm}$
+![](https://latex.codecogs.com/svg.latex?a^2&space;=&space;b^2&space;&plus;&space;c^2&space;-&space;2&space;b&space;c&space;\cos(\alpha)\\&space;=&space;30^2&space;&plus;&space;30^2&space;-&space;2&space;\cdot&space;30&space;\cdot&space;30&space;\cdot&space;cos(\frac{1}{60})\\&space;=&space;0.008727&space;\text{&space;cm})
 
 La taille minimale entre deux objets situés à 30cm est de 0.087 millimètres.
 
@@ -25,28 +23,25 @@ Le nombre de pixels est de 1280x720 (car HD 720), et on sait que l'écran mesure
 
 La taille d'un pixel en millimètres est donc :
 
-$\frac{111}{1280}, \frac{620}{720} = 0.086719, 0.861111$
+![](https://latex.codecogs.com/svg.latex?\frac{111}{1280},&space;\frac{620}{720}&space;=&space;0.086719,&space;0.861111)
 
 Ainsi un pixel mesure 0.087mm de large sur 0.86mm de long.
 
 >  Si ce smarphone est tenu à 30cm de l’œil, cette définition est-elle suffisante?
 
-Dans la première question, on a calculé que la distance minimale entre deux objets (ici des pixels) est de 0.25 cm pour qu'ils soient distinguables. Or, la largeur d'un pixel est de $0.008 \text{ cm}, 0.086 \text{ cm} \lt 0.0087 \text{ cm}$. Donc les pixels sont distinguables à 30 centimètres de l'utilisateur, donc la définition n'est pas suffisante.
+Dans la première question, on a calculé que la distance minimale entre deux objets (ici des pixels) est de 0.25 cm pour qu'ils soient distinguables. Or, la largeur d'un pixel est de ![](https://latex.codecogs.com/svg.latex?\inline&space;0.008&space;\text{&space;cm},&space;0.086&space;\text{&space;cm}&space;\lt&space;0.0087&space;\text{&space;cm}). Donc les pixels sont distinguables à 30 centimètres de l'utilisateur, donc la définition n'est pas suffisante.
 
 > En dessous de quelle distance (entre la personne et l’écran) une personne peut-elle distinguer les pixels d’un écran d’ordinateur de 22 pouces avec une définition HD 1080?
 
 Un écran 22 pouces est de dimension 48,7x27,4 cm. Un défintion HD 1080 a une résolution de 1920x1080. La taille d'un pixel est de :
 
-$\frac{487}{1920}, \frac{274}{1080} = 0.253646, 0.253704$
+![](https://latex.codecogs.com/svg.latex?\frac{487}{1920},&space;\frac{274}{1080}&space;=&space;0.253646,&space;0.253704)
 
 Ainsi, un pixel est de 0.25x0.25mm.
 
 On calcule maintenant la distance minimale :
 
-$a^2 = 2 d^2 - 2 d^2 \cos(\frac{1}{60}) \quad \text{ avec } d \text{ étant la distance } (d := b = c)\\
-a^2 = 2 d^2 (1 - \cos(\frac{1}{60}))\\
-\Leftrightarrow d^2 = 2 \frac{a^2}{1 - \cos(\frac{1}{60})}\\
-\Leftrightarrow d = \sqrt{\frac{a^2}{2 (1 - \cos(\frac{1}{60}))}}$
+![](https://latex.codecogs.com/svg.latex?a^2&space;=&space;2&space;d^2&space;-&space;2&space;d^2&space;\cos(\frac{1}{60})&space;\quad&space;\text{&space;avec&space;}&space;d&space;\text{&space;étant&space;la&space;distance&space;}&space;(d&space;:=&space;b&space;=&space;c)\\&space;a^2&space;=&space;2&space;d^2&space;(1&space;-&space;\cos(\frac{1}{60}))\\&space;\Leftrightarrow&space;d^2&space;=&space;2&space;\frac{a^2}{1&space;-&space;\cos(\frac{1}{60})}\\&space;\Leftrightarrow&space;d&space;=&space;\sqrt{\frac{a^2}{2&space;(1&space;-&space;\cos(\frac{1}{60}))}})
 
 > Soit une personne souhaitant acheter un écran de télévision, qui est placé à 2m de son canapé.
 Cette personne tient absolument à avoir une définition Ultra HD. À partir de quelle taille
@@ -181,3 +176,5 @@ En effet, l'image est echantillonnée sans prendre en compte le critère de Shan
 //images a changer
 ![](output/pool-imshow.png)
 ![](output/pool-channels.png)
+
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
