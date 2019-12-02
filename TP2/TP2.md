@@ -17,3 +17,7 @@ Reste à choisir si nous souhaitaons :
 - être stricte et ne prendre que les noyaux bien definis dont nous sommmes certains (ex: seuil = 120)
 - être plus laxiste afin de detecter les noyaux moins bien définis (ex: seuil = 180)
 Dans le cas de la recherche d'un cancer il est évident qu'on cherche a être precis et à detecter plus de noyaux possibles quitte à se tromper (cancer alors que sain)
+
+### 3 -
+Le contraste global calculé est de 1 ce qui est cohérent avec le fait qu'on a un minimum de 0 et un maximum de 1.
+Le constrate calculé a partie de l'écart type est plus précise
