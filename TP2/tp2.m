@@ -62,6 +62,7 @@ noyaux_bin2 = im2bw(noyaux);
 threshold = graythresh(noyaux);
 noyaux_bin3 = im2bw(noyaux, threshold);
 
+%{
 figure;
 subplot(2,2,1)
 imshow(noyaux)
@@ -76,6 +77,7 @@ f = subplot(2,2,4)
 imshow(noyaux_bin3)
 title("Methode im2bw with threshold")
 saveas(f, "output/noyaux_seg.png");
+%}
 
 # 3 - Dynamique
 [Lena_nb, map, alpha] = imread("data/Lena_nb.jpg");
@@ -83,7 +85,7 @@ saveas(f, "output/noyaux_seg.png");
 max_lena = max(Lena_nb(:))
 min_lena = min(Lena_nb(:))
 mean_lena = mean(Lena_nb(:))
-std_lena = std(Lena_nb(:))
+std_lena = std(std(Lena_nb))
 N = size(Lena_nb,1)
 M = size(Lena_nb,2)
 
@@ -91,27 +93,19 @@ contraste_v1 = (max_lena - min_lena)/(max_lena + min_lena)
 contraste_v2 = std_lena
 
 figure();
+histo = imhist(Lena_nb);
 imhist(Lena_nb);
+
+figure;
+histo_cum = cumsum(histo);
+plot(histo_cum);
+title("Histogramme cumulé");
 
 # 4 - Égalisation
 
-%{
-sum = 0;
-for i = 1:N-1
-  for j = 1:M-1
-      sum += power((Lena_nb(i,j) - mean_lena), 2);
-  endfor
-endfor
-%}
-
-%{
-a = unique(Lena_nb);
-out = [a,histc(Lena_nb(:),a)];
-
-P = out/(N*M);
 figure;
-hist(out(:))
-%}
+histo_eg = histo_cum*(max_lena-1);
+plot(histo_eg)
 
-#figure();
-#histeq(Lena_nb);
+figure;
+histeq(Lena_nb);
