@@ -126,9 +126,7 @@ On observe qu'il y a 256 niveaux de gris correspondant à 8 bits.
 
 > Afficher l’image en n’utilisant que 128, 64, 32, 16, 8, 4 et 2 niveaux de gris et observer la dégradation visuelle de l’image en cas de sous-quantification trop importante.
 
-```
-// TODO: Insert all images here
-```
+![](output/cameraman-niveaux-gris.png)
 
 ### 3 - Échantillonnage
 
@@ -138,7 +136,7 @@ On observe qu'il y a 256 niveaux de gris correspondant à 8 bits.
 cameraman_e2 = cameraman(1:2:size(cameraman)(1), 1:2:size(cameraman)(2));
 ```
 
-// TODO Insert image
+![](output/cameraman-sous-ech2.png)
 
 > Même question mais avec 4 fois moins de lignes et de colonnes.
 
@@ -146,7 +144,7 @@ cameraman_e2 = cameraman(1:2:size(cameraman)(1), 1:2:size(cameraman)(2));
 cameraman_e4 = cameraman(1:4:size(cameraman)(1), 1:4:size(cameraman)(2));
 ```
 
-// TODO Insert image
+![](output/cameraman-sous-ech4.png)
 
 > Pour chacune des 2 images sous échantillonnées créées, sur échantillonner là (en utilisant interp2 et meshgrid) afin d’obtenir une image de la taille d’origine. Commenter (se rappeler du cours du traitement du signal, Shannon par exemple).
 
@@ -175,11 +173,11 @@ C'est ce qu'on observe dans notre cas lorsqu'on sous-échantillone l'image.
 En effet, l'image est echantillonnée sans prendre en compte le critère de Shannon puis q'uon la reconstitue, on a un phénomène de recouvrement (escaliers).
 
 ![](output/cameraman-imshow.png)
-![](output/cameraman-sur-ech.png)
-
+![](output/cameraman-sur-ech2.png)
+![](output/cameraman-sur-ech4.png)
 
 ### 3 - Espaces colorimétriques
 
 //images a changer
-![](output/billard-original.png)
-![](output/billard-gray.png)
+![](output/pool-imshow.png)
+![](output/pool-channels.png)

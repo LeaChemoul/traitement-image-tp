@@ -80,10 +80,21 @@ printf("Taille de l'image sur le disque : %d bytes\n\n", info.FileSize);
 
 #> Ouvrir le fichier cameraman.jpg et l’afficher. Regarder les fonctions imread, imshow, image, imagesc et colorbar. Sur combien de bits sont représentés les niveaux de gris?
 
-#imshow(cameraman, map);
-#image(cameraman);
-#imagesc(cameraman);
-#colorbar();
+f = figure;
+imshow(cameraman, map);
+colorbar();
+saveas(f, "output/cameraman-imshow.png");
+
+f = figure;
+image(cameraman);
+colorbar();
+saveas(f, "output/cameraman-image.png");
+
+f = figure;
+imagesc(cameraman);
+colorbar();
+saveas(f, "output/cameraman-imagesc.png");
+
 
 #> Afficher l’image en n’utilisant que 128, 64, 32, 16, 8, 4 et 2 niveaux de gris et observer la dégradation visuelle de l’image en cas de sous-quantification trop importante.
 
@@ -94,7 +105,8 @@ cameraman_16 = round(cameraman_32./2);
 cameraman_8 = round(cameraman_16./2);
 cameraman_4 = round(cameraman_8./2);
 cameraman_2 = round(cameraman_4./2);
-%{
+
+figure;
 subplot(4, 2, 1);
 imshow(cameraman_128, map);
 colorbar();
@@ -113,34 +125,32 @@ colorbar();
 subplot(4, 2, 6);
 imshow(cameraman_4, map);
 colorbar();
-subplot(4, 2, 7);
+f = subplot(4, 2, 7);
 imshow(cameraman_2, map);
 colorbar();
-figure;
-%}
+saveas(f, "output/cameraman-niveaux-gris.png");
 
 # 3 - Échantillonnage
 
 #> En utilisant toujours cameraman.jpg, créer en une autre sous-échantillonner avec 2 fois moins de lignes et colonnes.
 
 cameraman_e2 = cameraman(1:2:size(cameraman)(1), 1:2:size(cameraman)(2));
-%{
-figure;
+f = figure;
 imshow(cameraman_e2, map);
 colorbar();
-%}
+saveas(f, "output/cameraman-sous-ech2.png");
 
 #> Même question mais avec 4 fois moins de lignes et de colonnes.
 
 cameraman_e4 = cameraman(1:4:size(cameraman)(1), 1:4:size(cameraman)(2));
-%{
-figure;
+f = figure;
 imshow(cameraman_e4, map);
 colorbar();
-%}
+saveas(f, "output/cameraman-sous-ech4.png");
 
 #> Pour chacune des 2 images sous échantillonnées créées, sur échantillonner là (en utilisant interp2 et meshgrid) afin d’obtenir une image de la taille d’origine. Commenter (se rappeler du cours du traitement du signal, Shannon par exemple).
 
+figure;
 cameraman_se2 = interp2(cameraman_e2);
 size(cameraman_se2)
 subplot(1, 3, 1);
@@ -149,11 +159,12 @@ title('Original')
 subplot(1, 3, 2);
 imshow(cameraman_e2);
 title('Sous echantillonage 2')
-subplot(1, 3, 3);
+f = subplot(1, 3, 3);
 imshow(cameraman_se2);
 title('Sur echantillonage 2')
-figure;
+saveas(f, "output/cameraman-sur-ech2.png");
 
+figure;
 cameraman_se4 = interp2(cameraman_e4);
 size(cameraman_se4)
 subplot(1, 3, 1);
@@ -162,20 +173,19 @@ title('Original')
 subplot(1, 3, 2);
 imshow(cameraman_e4);
 title('Sous echantillonage 4')
-subplot(1, 3, 3);
+f = subplot(1, 3, 3);
 imshow(cameraman_se4);
 title('Sur echantillonage 4')
-figure;
+saveas(f, "output/cameraman-sur-ech4.png");
 
 # 4- Espaces colorimétriques
 
 %RGB color
 [pool, map, alpha] = imread("data/pool.jpg");
-%{
+f = figure;
 imshow(pool, map);
 colorbar();
-figure;
-%}
+saveas(f, "output/pool-imshow.png");
 
 % Extract color channels.
 redChannel = pool(:,:,1);
@@ -191,7 +201,7 @@ gray_red = rgb2gray(just_red);
 gray_green = rgb2gray(just_green);
 gray_blue = rgb2gray(just_blue);
 
-%{
+figure;
 subplot(3, 2, 1);
 imshow(just_red);
 colorbar();
@@ -213,9 +223,14 @@ imshow(just_green);
 colorbar();
 title('Green Cannel')
 subplot(3, 2, 6);
-imshow(gray_green);
+f = imshow(gray_green);
 colorbar();
 title('Green gray')
-%}
+saveas(f, "output/pool-channels.png");
 
 %YUV color
+
+
+
+% Comment the following line to keep the images displayed during execution.
+close all hidden;
