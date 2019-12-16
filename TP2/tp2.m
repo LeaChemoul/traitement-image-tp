@@ -6,42 +6,38 @@ pkg load image
 
 # 1 - Arbre à chats
 
+% Loading images
 [chat, map_chat, alpha_chat] = imread("data/chat.jpg");
 [arbre, map_arbre, alpha_arbre] = imread("data/arbre.jpg");
 
-chat_transp = chat;
-%chat_transp(:, :, 2) = 0;
-%{
-for x = 1:size(chat_transp, 1)
-    for y = 1:size(chat_transp, 2)
-		if chat_transp(x, y, 1) == 106 && chat_transp(x, y, 2) == 182 && chat_transp(x, y, 3) == 107
-			chat_transp(x, y, 1) = 255;
-			chat_transp(x, y, 2) = 255;
-			chat_transp(x, y, 3) = 255;
-		endif
-	endfor
-endfor
-%}
-
-r_filter = (chat(:, :, 1) >= 106 - 10) & (chat(:, :, 1) <= 106 + 10);
-g_filter = (chat(:, :, 2) >= 182 - 30) & (chat(:, :, 2) <= 182 + 30);
-b_filter = (chat(:, :, 3) >= 107 - 20) & (chat(:, :, 3) <= 107 + 20);
+% Creating a mask to catch all pixels within a certain range
+r_filter = (chat(:, :, 1) >= 106 - 20) & (chat(:, :, 1) <= 106 + 20);
+g_filter = (chat(:, :, 2) >= 182 - 60) & (chat(:, :, 2) <= 182 + 60);
+b_filter = (chat(:, :, 3) >= 107 - 30) & (chat(:, :, 3) <= 107 + 30);
+% Create a global mask for all chanels
 px_to_remove = r_filter & g_filter & b_filter;
 chat_r = chat(:, :, 1);
 chat_g = chat(:, :, 2);
 chat_b = chat(:, :, 3);
-chat_r(px_to_remove) = 255;
-chat_g(px_to_remove) = 255;
-chat_b(px_to_remove) = 255;
+% Replace all greenish pixels to '0' (black)
+chat_r(px_to_remove) = 0;
+chat_g(px_to_remove) = 0;
+chat_b(px_to_remove) = 0;
+% Create the image with transparency
 chat_transp(:, :, 1) = chat_r;
 chat_transp(:, :, 2) = chat_g;
 chat_transp(:, :, 3) = chat_b;
-%chat_transp(px_to_remove) = 0;
 
 f = figure;
-imshow(chat_transp);
+im_chat_transp = imshow(chat_transp);
 title("Chat sans fond vert");
+saveas(f, "output/chat_transp.png");
 
+result(:, :, :) = arbre(:, :, :) - min(255, 255 * chat_transp(:, :, :)) + chat_transp(:, :, :);
+f = figure;
+imshow(result);
+title("Chat sur une balancoire avec un arbre derriere");
+saveas(f, "output/chat_arbre.png");
 
 # 2 - Segmentation
 [noyaux, map, alpha] = imread("data/noyaux.jpeg");
