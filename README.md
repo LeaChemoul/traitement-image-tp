@@ -1,5 +1,12 @@
-[TP1](TP1/TP1.md)
+# Traitement d'Image
 
-[TP2](TP2/TP2.md)
+> Auteurs :
+>
+> * Léa CHEMOUL
+> * Valentin Berger
 
-[TP3](TP3/TP3.md)
+Vous trouverez les rapports des TP dans les dossiers correspondants. Voici les liens vers les rapport (réalisé en MarkDown) :
+
+* [TP1 - Échantillonnage et Quantification](TP1/TP1.md)
+* [TP2 - Histogrammes](TP2/TP2.md)
+* [TP3 - Filtres linéaires](TP3/TP3.md)
