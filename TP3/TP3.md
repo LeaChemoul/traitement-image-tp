@@ -26,6 +26,14 @@ dominos_conv_h3 = conv2(dominos, H3, 'same');
 
 ![Convolution 2D de monde et sa transposé avec les masques H3, H4](output/monde_transposed_conv2_h1_h2.png)
 
+Pour détecter les diagonales, nous utilisons le masque suivant :
+
+|    |    |    |
+|----|----|----|
+| -1 | -1 | 0  |
+| -1 | 0  | 1  |
+| 0  | 1  | 1  |
+
 ### 2 - Filtres passe bas
 
 ![Convolution 2D des images avec les masques H1 et H2](output/all_conv2_h1_h2.png)

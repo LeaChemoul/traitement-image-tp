@@ -82,10 +82,38 @@ imshow(conv2(monde', H4, "same"));
 title("monde transposed convoluted with H4");
 saveas(f, "output/monde_transposed_conv2_h3_h4.png");
 
+% Change H3 to detect diagonal
+H3 = [-1, -1, 0; -1, 0, 1; 0, 1, 1];
+
+monde_conv_h3 = conv(monde, H3);
+monde_t_conv_h3 = conv(monde', H3);
+
+figure;
+subplot(1, 2, 1);
+imshow(monde_conv_h3);
+title("monde convoluted with H3 diagonal");
+f = subplot(1, 2, 2);
+imshow(monde_t_conv_h3);
+title("monde convoluted with H3 diagonal");
+saveas(f, "output/monde_transposed_conv2_h3_diag.png");
+
+% Combine H3 and H4
+
+monde_conv_h3_h4 = conv(monde, H3);
+monde_conv_h3_h4 = conv(monde_conv_h3_h4, H4);
+figure;
+subplot(1, 2, 1);
+imshow(monde_conv_h3_h4);
+title("monde convoluted with H3 and H4");
+f = subplot(1, 2, 2);
+imshow(monde_conv_h5);
+title("monde convoluted with H5");
+saveas(f, "output/monde_conv2_comb_h3_h4.png");
+
 # 2 - Filtres passe haut
 
 H1 = (1/9) * ones([3, 3]);
-H2 = (1/6) * [1, 2, 1; 2, 4, 2; 1, 2, 1];
+H2 = (1/16) * [1, 2, 1; 2, 4, 2; 1, 2, 1];
 
 % Plot all convolution of images with H1 and H2
 [dominos_conv_h1, monde_conv_h1, lena_conv_h1] = convImages(H1);
