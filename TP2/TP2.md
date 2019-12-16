@@ -67,3 +67,23 @@ Le contraste calculé a partie de l'écart type est plus précise
 contraste_v1 = 1
 contraste_v2 =  44.192
 ```
+
+### 3 - Égalisation
+
+Le but de cette partie est dégaliser l'histogramme et d'améliorer le **contraste** de l'image.
+
+On constate bien pour les deux images que :
+- L'histogramme cumulé est plus **dilaté linéairement**
+- l'image est bien plus **contrastée**
+
+![](output/lena_eg.png)
+![](output/lena_histo_cum.png)
+![](output/lena_histo_eg.png)
+![](output/lena_histo_eg_cum.png)
+
+On passe notre image Mandrill qui est en couleur en HSV afin de traiter le dernier canal V représentant l'intensité lumineuse.
+
+![](output/mand_eg.png)
+![](output/mand_histo_cum.png)
+![](output/mand_histo_eg.png)
+![](output/mand_histo_eg_cum.png)
