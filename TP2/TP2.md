@@ -53,13 +53,16 @@ Le résultat est le suivant :
 
 ![](output/noyaux_seg.png)
 
-Qu'est ce qu'un bon seuil ? Ici nous pouvons choisir notre seuil qu'à titre subjectif à l'oeil
-(étant donné que nous n'avaons pas de moyen objectif de mesurer et verifier nos valeurs).
-Reste à choisir si nous souhaitaons :
-- être stricte et ne prendre que les noyaux bien definis dont nous sommmes certains (ex: seuil = 120)
-- être plus laxiste afin de detecter les noyaux moins bien définis (ex: seuil = 180)
-Dans le cas de la recherche d'un cancer il est évident qu'on cherche a être precis et à detecter plus de noyaux possibles quitte à se tromper (cancer alors que sain)
+Qu'est-ce qu'un bon seuil ? Ici nous pouvons choisir notre seuil qu'à titre subjectif à l'œil (étant donné que nous n'avons pas de moyen objectif de mesurer et vérifier nos valeurs).
+Reste à choisir si nous souhaitons :
+- être stricte et ne prendre que les noyaux bien définis dont nous sommes certains (ex: seuil = 120)
+- être plus laxiste afin de détecter les noyaux moins bien définis (ex: seuil = 180)
+Dans le cas de la recherche d'un cancer il est évident qu'on cherche à être précis et à détecter plus de noyaux possibles quitte à se tromper (cancer alors que sain)
 
-### 3 -
+### 3 - Dynamique
 Le contraste global calculé est de 1 ce qui est cohérent avec le fait qu'on a un minimum de 0 et un maximum de 1.
-Le constrate calculé a partie de l'écart type est plus précise
+Le contraste calculé a partie de l'écart type est plus précise
+
+### 4 - Égalisation
+
+
