@@ -7,7 +7,7 @@
 
 ## TP2 - Histogrammes
 
-### Arbre à chat
+### 1 - Arbre à chat
 
 Pour remplacer le fond vert d'une image par une autre image, nous utilisons des masques. Premièrement, il faut créer des filtres de manière à sélectionner une plage de pixels. Dans notre cas, nous savons que les pixels vert sont `rgb(106, 182, 107)`, donc nous faisons varier les pixels de cette façon : `Δr = 106 ± 20`, `Δg = 182 ± 60`, `Δb = 107 ± 30`. Cette variation permet de sélectionner également les pixels proches des contours de la balançoire et du chat. Le code Matlab associé est le suivant :
 
