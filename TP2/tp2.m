@@ -81,27 +81,82 @@ saveas(f, "output/noyaux_seg.png");
 max_lena = max(Lena_nb(:))
 min_lena = min(Lena_nb(:))
 mean_lena = mean(Lena_nb(:))
-std_lena = std(std(Lena_nb))
+std_lena = std(Lena_nb(:))
 N = size(Lena_nb,1)
 M = size(Lena_nb,2)
 
 contraste_v1 = (max_lena - min_lena)/(max_lena + min_lena)
 contraste_v2 = std_lena
 
-figure();
-histo = imhist(Lena_nb);
-imhist(Lena_nb);
-
 figure;
-histo_cum = cumsum(histo);
-plot(histo_cum);
-title("Histogramme cumulé");
+imhist(Lena_nb);
 
 # 4 - Égalisation
 
-figure;
-histo_eg = histo_cum*(max_lena-1);
-plot(histo_eg)
+function egalise(image, grayscale, hsv)
+
+if(hsv == 0)
+  image2  = image(:,:,3);
+else
+  image2 = image;
+endif
+
+histo = imhist(image2);
+
+N = size(image2,1)
+M = size(image2,2)
 
 figure;
-histeq(Lena_nb);
+histo_cum = cumsum(histo/(N*M));
+plot(histo_cum);
+title("Histogramme cumule");
+
+if(hsv == 0)
+  image_eg = uint8(arrayfun(@(x) histo_cum((x*255)+1)*(grayscale-1), image2));
+else
+  image_eg = uint8(arrayfun(@(x) histo_cum(x+1)*(grayscale-1), image2));
+endif
+
+if(hsv == 0)
+  image_eg_2(:,:,1) = image(:,:,1);
+  image_eg_2(:,:,2) = image(:,:,2);
+  image_eg_2(:,:,3) = image_eg/255;
+  image_eg_final = hsv2rgb(image_eg_2);
+else
+  image_eg_final = image_eg;
+endif
+
+figure;
+subplot(1,2,1)
+if(hsv == 0)
+  imshow(hsv2rgb(image))
+else
+  imshow(image)
+endif
+title("Original")
+subplot(1,2,2)
+imshow(image_eg_final)
+title("Egalisee")
+
+figure;
+histo_eg = imhist(image_eg);
+imhist(image_eg);
+title("Histo egalisee")
+
+figure;
+histo_cum_eg = cumsum(histo_eg/(N*M));
+plot(histo_cum_eg);
+title("Histogramme egalisee cumule");
+
+figure;
+histo_eq_verif = histeq(histo_cum);
+plot(histo_eq_verif);
+title("Histogramme egalisee avec hist eq");
+
+end
+
+egalise(Lena_nb, 255, 1);
+
+[mandrill, map, alpha] = imread("data/mandrill.bmp");
+mandrill_hsv = rgb2hsv(mandrill);
+egalise(mandrill_hsv,255, 0);

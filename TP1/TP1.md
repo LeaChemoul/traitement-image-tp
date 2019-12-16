@@ -158,6 +158,8 @@ Lorsqu'on a 2 niveaux de gris, alors pour une période donnée on aura deux info
 - la crête positive correpondant au blanc
 - la crête négative correspondant au noir
 
+Pour une basse fréquence : tendance a être plus uniforme
+
 La période d'échantillonnage `Te` doit être au moins deux fois plus petite que celle du signal `T0`
 
 Lorsque cela n'est pas le cas, on aura une image moins representative de l'image initiale.

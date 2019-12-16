@@ -63,6 +63,7 @@ Dans le cas de la recherche d'un cancer il est évident qu'on cherche à être p
 Le contraste global calculé est de 1 ce qui est cohérent avec le fait qu'on a un minimum de 0 et un maximum de 1.
 Le contraste calculé a partie de l'écart type est plus précise
 
-### 4 - Égalisation
-
-
+```
+contraste_v1 = 1
+contraste_v2 =  44.192
+```
