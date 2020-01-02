@@ -172,33 +172,33 @@ function mask = blur_mask(size)
 	mask = (1/(size * size)) * ones([size, size]);
 endfunction
 
-dominos_conv_h1_3 = conv(dominos, blur_mask(3));
-dominos_conv_h1_5 = conv(dominos, blur_mask(5));
-dominos_conv_h1_10 = conv(dominos, blur_mask(10));
-dominos_conv_h1_20 = conv(dominos, blur_mask(20));
-dominos_conv_h1_50 = conv(dominos, blur_mask(50));
-dominos_conv_h1_100 = conv(dominos, blur_mask(100));
+lena_conv_h1_3 = conv(lena, blur_mask(3));
+lena_conv_h1_5 = conv(lena, blur_mask(5));
+lena_conv_h1_10 = conv(lena, blur_mask(10));
+lena_conv_h1_20 = conv(lena, blur_mask(20));
+lena_conv_h1_50 = conv(lena, blur_mask(50));
+lena_conv_h1_100 = conv(lena, blur_mask(100));
 
 figure;
 subplot(2, 3, 1);
-imshow(dominos_conv_h1_3);
-title("Dominos conv. with H1 3x3");
+imshow(lena_conv_h1_3);
+title("1 verre de vodka");
 subplot(2, 3, 2);
-imshow(dominos_conv_h1_5);
-title("Dominos conv. with H1 5x5");
+imshow(lena_conv_h1_5);
+title("2 verres de vodka");
 subplot(2, 3, 3);
-imshow(dominos_conv_h1_10);
-title("Dominos conv. with H1 10x10");
+imshow(lena_conv_h1_10);
+title("3 verres de vodka");
 subplot(2, 3, 4);
-imshow(dominos_conv_h1_20);
-title("Dominos conv. with H1 20x20");
+imshow(lena_conv_h1_20);
+title("5 verres de vodka");
 subplot(2, 3, 5);
-imshow(dominos_conv_h1_50);
-title("Dominos conv. with H1 50x50");
+imshow(lena_conv_h1_50);
+title("10 verres de vodka");
 f = subplot(2, 3, 6);
-imshow(dominos_conv_h1_100);
-title("Dominos conv. with H1 100x100");
-saveas(f, "output/dominos_h1_size.png");
+imshow(lena_conv_h1_100);
+title("Giraffe de vodka");
+saveas(f, "output/lena_h1_size.png");
 
 % Comment the following line to keep the images displayed during execution.
 close all hidden;
