@@ -48,8 +48,11 @@ Pour détecter les diagonales, nous utilisons le masque suivant :
 > Combiner les détections horizontales et verticales pour H3 et pour H4 et les comparer avec
 l’application de H
 
+![Convolution 2D de monde avec la combinaison de H3 et H4, et la convolution de monde avec H5](output/monde_conv2_comb_h3_h4.png)
+
 > Soutraire le laplacien (H5) à l’image permet d’augmenter son contraste
 
+![Comparaison de Dominos avec sa copy moins son Laplacien](output/dominos_laplacian_contrast.png)
 
 ### 2 - Filtres passe bas
 

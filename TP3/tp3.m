@@ -107,6 +107,21 @@ imshow(monde_conv_h5);
 title("monde convoluted with H5");
 saveas(f, "output/monde_conv2_comb_h3_h4.png");
 
+% Substract Laplacian
+
+dominos_contrast = dominos - dominos_conv_h5;
+figure;
+subplot(2, 2, 1);
+imshow(dominos);
+title("dominos (original)");
+subplot(2, 2, 2);
+imshow(dominos_conv_h5);
+title("dominos convoluted with H5 (Laplacian)");
+f = subplot(2, 2, 3);
+imshow(dominos_contrast);
+title("dominos minus its Laplacian");
+saveas(f, "output/dominos_laplacian_contrast.png");
+
 # 2 - Filtres passe haut
 
 H1 = (1/9) * ones([3, 3]);
