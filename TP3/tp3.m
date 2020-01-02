@@ -166,7 +166,39 @@ imshow(monde_conv_h2);
 title("monde convoluted with H2");
 saveas(f, "output/monde_conv2_h1_h2.png");
 
+% Influence of H1 size
 
+function mask = blur_mask(size)
+	mask = (1/(size * size)) * ones([size, size]);
+endfunction
+
+dominos_conv_h1_3 = conv(dominos, blur_mask(3));
+dominos_conv_h1_5 = conv(dominos, blur_mask(5));
+dominos_conv_h1_10 = conv(dominos, blur_mask(10));
+dominos_conv_h1_20 = conv(dominos, blur_mask(20));
+dominos_conv_h1_50 = conv(dominos, blur_mask(50));
+dominos_conv_h1_100 = conv(dominos, blur_mask(100));
+
+figure;
+subplot(2, 3, 1);
+imshow(dominos_conv_h1_3);
+title("Dominos conv. with H1 3x3");
+subplot(2, 3, 2);
+imshow(dominos_conv_h1_5);
+title("Dominos conv. with H1 5x5");
+subplot(2, 3, 3);
+imshow(dominos_conv_h1_10);
+title("Dominos conv. with H1 10x10");
+subplot(2, 3, 4);
+imshow(dominos_conv_h1_20);
+title("Dominos conv. with H1 20x20");
+subplot(2, 3, 5);
+imshow(dominos_conv_h1_50);
+title("Dominos conv. with H1 50x50");
+f = subplot(2, 3, 6);
+imshow(dominos_conv_h1_100);
+title("Dominos conv. with H1 100x100");
+saveas(f, "output/dominos_h1_size.png");
 
 % Comment the following line to keep the images displayed during execution.
 close all hidden;

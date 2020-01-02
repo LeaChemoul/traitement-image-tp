@@ -81,3 +81,5 @@ On a donc deux méthodes pour limiter le crénelage :
 
 
 > Quelle est l’influence de la taille du filtre pour H1?
+
+![Convolution de Dominos avec différente taille de H1](output/dominos_h1_size.png)
