@@ -82,4 +82,6 @@ On a donc deux méthodes pour limiter le crénelage :
 
 > Quelle est l’influence de la taille du filtre pour H1?
 
+H1 fonctionne comme un filtre passe-bas effectuant un lissage global de l'image. Plus sa taille est grande plus le floutage des contours et la suppression des détails est important comme nous pouvons le constater sur la série d'images ci-dessous. 
+
 ![Convolution de Dominos avec différente taille de H1](output/dominos_h1_size.png)
