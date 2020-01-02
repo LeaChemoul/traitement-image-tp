@@ -20,19 +20,16 @@ function img_conv = conv(img, mask)
 	img_conv = uint8(conv2(img, mask, "same"));
 endfunction
 
-function [dominos_conv, monde_conv, lena_conv] = convImages(mask)
-	global dominos;
-	global monde;
-	global lena;
-	dominos_conv = conv(dominos, mask);
-	monde_conv = conv(monde, mask);
-	lena_conv = conv(lena, mask);
-endfunction
-
 % Plot all convolutions of images with convolution masks
-[dominos_conv_h3, monde_conv_h3, lena_conv_h3] = convImages(H3);
-[dominos_conv_h4, monde_conv_h4, lena_conv_h4] = convImages(H4);
-[dominos_conv_h5, monde_conv_h5, lena_conv_h5] = convImages(H5);
+dominos_conv_h3 = conv(dominos, H3);
+monde_conv_h3 = conv(monde, H3);
+lena_conv_h3 = conv(lena, H3);
+dominos_conv_h4 = conv(dominos, H4);
+monde_conv_h4 = conv(monde, H4);
+lena_conv_h4 = conv(lena, H4);
+dominos_conv_h5 = conv(dominos, H5);
+monde_conv_h5 = conv(monde, H5);
+lena_conv_h5 = conv(lena, H5);
 
 figure;
 subplot(3, 3, 1);
@@ -116,8 +113,12 @@ H1 = (1/9) * ones([3, 3]);
 H2 = (1/16) * [1, 2, 1; 2, 4, 2; 1, 2, 1];
 
 % Plot all convolution of images with H1 and H2
-[dominos_conv_h1, monde_conv_h1, lena_conv_h1] = convImages(H1);
-[dominos_conv_h2, monde_conv_h2, lena_conv_h2] = convImages(H2);
+dominos_conv_h1 = conv(dominos, H1);
+monde_conv_h1 = conv(monde, H1);
+lena_conv_h1 = conv(lena, H1);
+dominos_conv_h2 = conv(dominos, H2);
+monde_conv_h2 = conv(monde, H2);
+lena_conv_h2 = conv(lena, H2);
 
 figure;
 subplot(2, 3, 1);
