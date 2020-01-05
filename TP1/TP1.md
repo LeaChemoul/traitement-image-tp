@@ -150,7 +150,7 @@ cameraman_se2 = interp2(cameraman_e2);
 Avec interp2 on va completer les élements manquants en fonction de leur emplacement.
 Il va renvoyer les valeurs interpolées dans les éléments de Z.
 
-**Remarques** Théorème de Shannon
+**Remarques**
 
 L'information périodique contenue dans une image peut être assimilée à une fonction fréquentielle
 de période `T0`.
@@ -160,6 +160,8 @@ Lorsqu'on a 2 niveaux de gris, alors pour une période donnée on aura deux info
 
 Pour une basse fréquence : tendance a être plus uniforme
 
+*Théorème de Shannon*
+
 La période d'échantillonnage `Te` doit être au moins deux fois plus petite que celle du signal `T0`
 
 Lorsque cela n'est pas le cas, on aura une image moins representative de l'image initiale.
@@ -167,7 +169,7 @@ Le phénomène d'aliasing (recouvrement de signal) va se produire lorsque la fr�
 supérieure au double de la fréquence d'échantillonnage.
 
 C'est ce qu'on observe dans notre cas lorsqu'on sous-échantillone l'image.
-En effet, l'image est echantillonnée sans prendre en compte le critère de Shannon puis q'uon la reconstitue, on a un phénomène de recouvrement (escaliers).
+En effet, l'image est echantillonnée sans prendre en compte le critère de Shannon puis lorsqu'on la reconstitue, on a un phénomène de recouvrement plus prononcé (escaliers).
 
 ![](output/cameraman-imshow.png)
 ![](output/cameraman-sur-ech2.png)
@@ -175,9 +177,13 @@ En effet, l'image est echantillonnée sans prendre en compte le critère de Shan
 
 ### 4 - Espaces colorimétriques
 
-//images a changer
+#### Image orginale
 ![](output/pool-imshow.png)
+
+#### RGB channels
 ![](output/pool-channels.png)
+
+#### YUV channels
 ![](output/pool-channels-yuv.png)
 
 On ajoute une information de chrominance (couleurs) au signal de luminance (noir et blanc) Y.

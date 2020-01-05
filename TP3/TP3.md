@@ -46,9 +46,10 @@ Pour détecter les diagonales, nous utilisons le masque suivant :
 | 0  | 1  | 1  |
 
 > Combiner les détections horizontales et verticales pour H3 et pour H4 et les comparer avec
-l’application de H
+l’application de H5
 
 ![Convolution 2D de monde avec la combinaison de H3 et H4, et la convolution de monde avec H5](output/monde_conv2_comb_h3_h4.png)
+
 
 > Soutraire le laplacien (H5) à l’image permet d’augmenter son contraste
 
@@ -82,7 +83,7 @@ On a donc deux méthodes pour limiter le crénelage :
 
 > Quelle est l’influence de la taille du filtre pour H1?
 
-H1 fonctionne comme un filtre passe-bas effectuant un lissage global de l'image. Plus sa taille est grande plus le floutage des contours et la suppression des détails est important comme nous pouvons le constater sur la série d'images ci-dessous. 
+H1 fonctionne comme un filtre passe-bas effectuant un lissage global de l'image. Plus sa taille est grande plus le floutage des contours et la suppression des détails est important comme nous pouvons le constater sur la série d'images ci-dessous.
 
 ![Convolution de Dominos avec différente taille de H1](output/dominos_h1_size.png)
 
