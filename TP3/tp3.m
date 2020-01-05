@@ -156,15 +156,18 @@ imshow(lena_conv_h2);
 title("lena convoluted with H2");
 saveas(f, "output/all_conv2_h1_h2.png");
 
-% Plot convolution of "monde" with H1 and H2
+% Plot convolution of "dominos" with H1 and H2
 figure;
-subplot(1, 2, 1);
-imshow(monde_conv_h1);
-title("monde convoluted with H1");
-f = subplot(1, 2, 2);
-imshow(monde_conv_h2);
-title("monde convoluted with H2");
-saveas(f, "output/monde_conv2_h1_h2.png");
+subplot(1, 3, 1);
+imshow(dominos);
+title("dominos (orignal)");
+subplot(1, 3, 2);
+imshow(dominos_conv_h1);
+title("dominos convoluted with H1");
+f = subplot(1, 3, 3);
+imshow(dominos_conv_h2);
+title("dominos convoluted with H2");
+saveas(f, "output/dominos_conv2_h1_h2.png");
 
 % Influence of H1 size
 
@@ -199,6 +202,38 @@ f = subplot(2, 3, 6);
 imshow(dominos_conv_h1_100);
 title("Dominos conv. with H1 100x100");
 saveas(f, "output/dominos_h1_size.png");
+
+
+% Influence of H2 size
+
+sigma = 20;
+dominos_conv_h2_3 = conv(dominos, fspecial("gaussian", [3, 3], sigma));
+dominos_conv_h2_5 = conv(dominos, fspecial("gaussian", [5, 5], sigma));
+dominos_conv_h2_10 = conv(dominos, fspecial("gaussian", [10, 10], sigma));
+dominos_conv_h2_20 = conv(dominos, fspecial("gaussian", [20, 20], sigma));
+dominos_conv_h2_50 = conv(dominos, fspecial("gaussian", [50, 50], sigma));
+dominos_conv_h2_100 = conv(dominos, fspecial("gaussian", [100, 100], sigma));
+
+figure;
+subplot(2, 3, 1);
+imshow(dominos_conv_h2_3);
+title("Dominos conv. with H2 3x3");
+subplot(2, 3, 2);
+imshow(dominos_conv_h2_5);
+title("Dominos conv. with H2 5x5");
+subplot(2, 3, 3);
+imshow(dominos_conv_h2_10);
+title("Dominos conv. with H2 10x10");
+subplot(2, 3, 4);
+imshow(dominos_conv_h2_20);
+title("Dominos conv. with H2 20x20");
+subplot(2, 3, 5);
+imshow(dominos_conv_h2_50);
+title("Dominos conv. with H2 50x50");
+f = subplot(2, 3, 6);
+imshow(dominos_conv_h2_100);
+title("Dominos conv. with H2 100x100");
+saveas(f, "output/dominos_h2_size.png");
 
 % Comment the following line to keep the images displayed during execution.
 close all hidden;

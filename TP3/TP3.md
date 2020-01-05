@@ -60,9 +60,9 @@ l’application de H
 
 ![Convolution 2D des images avec les masques H1 et H2](output/all_conv2_h1_h2.png)
 
-![Convolution 2D de monde avec les masques H1 et H2](output/monde_conv2_h1_h2.png)
+![Convolution 2D de dominos avec les masques H1 et H2](output/dominos_conv2_h1_h2.png)
 
-
+Nous pouvons observer que les deux images convoluées avec H1 et H2 sont plus **floues** que l'original. En effet, en étudiant de plus près les masques de convolution, nous pouvons voir que H1 applique une **moyenne des 9 pixels** sur lesquels ils s'appliquent, donnant un flou "*carré*". Le filtre H2, cependant, applique une moyenne comme H1, mais avec **des poids** : plus le pixels est proche du centre du masque, plus le poids est grand. Ceci correspond donc à un **flou Gaussien**.
 
 > Quelle(s) différence(s) avec le sur échantillonnage du TP1?
 
@@ -85,3 +85,19 @@ On a donc deux méthodes pour limiter le crénelage :
 H1 fonctionne comme un filtre passe-bas effectuant un lissage global de l'image. Plus sa taille est grande plus le floutage des contours et la suppression des détails est important comme nous pouvons le constater sur la série d'images ci-dessous. 
 
 ![Convolution de Dominos avec différente taille de H1](output/dominos_h1_size.png)
+
+Nous avons également étudié l'influence de la taille pour H2. Comme H2 est un filtre Gaussien, nous nous appuyons sur la formule suivante pour créer une matrice de taille ![n * m](https://latex.codecogs.com/svg.latex?n&space;\times&space;m) :
+
+![Gaussian filter equation](https://latex.codecogs.com/svg.latex?G(x,&space;y)&space;=&space;\frac{1}{2&space;\pi&space;\sigma^2}&space;e^{-\frac{x^2&space;&plus;&space;y^2}{2&space;\sigma^2}})
+
+Sous Octave, nous utilisons la fonction suivante pour créer un tel masque :
+
+```matlab
+fspecial("gaussian", [n, m], sigma)
+```
+
+Voici les résultats obtenus sur **dominos** avec les même tailles prises pour l'expérience ci-dessus et `sigma=20` :
+
+![Convolution de Dominos avec différente taille de H2](output/dominos_h2_size.png)
+
+Nous remarquons que le flou est différent de celui généré par H1, grâce à la moyenne pondérée utilisée.
