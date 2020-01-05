@@ -5,6 +5,8 @@
 > * Léa CHEMOUL
 > * Valentin Berger
 
+Ce projet est versioné par Git/GitHub. Lien GitHub : https://github.com/LeaChemoul/traitement-image-tp
+
 Vous trouverez les rapports des TP dans les dossiers correspondants. Voici les liens vers les rapport (réalisé en MarkDown) :
 
 * [TP1 - Échantillonnage et Quantification](TP1/TP1.md)
