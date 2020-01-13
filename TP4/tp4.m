@@ -140,7 +140,7 @@ lena_bruit_1 = num2cell(lena);
 values = {0, 255};
 p = 0.20;
 lena_to_change=rand(size(lena,1),size(lena,2))<p;
-lena_bruit_1(lena_to_change)= values(randi([1, 2], 1));
+lena_bruit_1(lena_to_change)= values[randi([1, 2], 1)];
 
 figure;
 subplot(1, 2, 1);
@@ -151,6 +151,24 @@ imshow(cell2mat(lena_bruit_1));
 title("Lena bruit 1");
 
 saveas(f, "output/lena_poivre_sel.png");
+
+## 1. Bruit Gaussien
+
+lena_bruit_2= lena;
+mu = 0;
+var = 10;
+X = mu + randn(size(lena,1), size(lena,2))*var;
+lena_bruit_2 = lena_bruit_2 + X;
+
+figure;
+subplot(1, 2, 1);
+imshow(lena);
+title("Lena original");
+f = subplot(1, 2, 2);
+imshow(lena_bruit_2);
+title("Lena bruit gaussien");
+
+saveas(f, "output/lena_gaussien.png");
 
 ## Filtre passe bas
 
