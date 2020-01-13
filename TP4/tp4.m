@@ -164,5 +164,9 @@ function gaussian_blur(img, mask_size, sigma = 20, shape = 'same')
 	img_conv = uint8(conv2(img, mask, shape));
 endfunction
 
+function distance = euclidean_distance_img(img1, img2)
+	distance = sqrt(sum((img1(:) - img2(:)).^2))
+endfunction
+
 % Comment the following line to keep the images displayed during execution.
 %close all hidden;
