@@ -19,6 +19,8 @@
 
 ### 2 - Contours
 
+![](output/cameraman_gradient.png)
+
 Le filtre passe haut du TP3 nous permettait de detecter les contours d'une image aux moyens de masques.
 La méthode du gradient permet de detecter les contours à la fois verticaux, horizontaux et diagonaux. Il fonctionne comme la combinaison des masques du TP3.
 

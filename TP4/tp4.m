@@ -108,7 +108,6 @@ imshow(cameraman_ouverture);
 title("Cameraman opened");
 
 saveas(f, "output/cameraman_closed_opened.png");
-close all hidden;
 
 # 2 - Contours
 
@@ -118,7 +117,7 @@ figure;
 subplot(1, 2, 1);
 imshow(cameraman);
 title("Cameraman original");
-subplot(1, 2, 2);
+f = subplot(1, 2, 2);
 imshow(cameraman_gradient);
 title("Cameramn gradient");
 
