@@ -77,6 +77,22 @@ La méthode du gradient permet de detecter les contours à la fois verticaux, ho
 
 ### 3 - Débruitage
 
+#### Bruit poivre et sel
+
+![](output/lena_poivre_sel.png)
+
+On va par exemple pour 20% des valeurs de notre matrice (probabilité = 0,20) décider de changer en 0 (poivre) ou en 255 (sel) notre valeur.
+
+Plus la valeur de cette probabilité est grande plus on a de valeurs changées donc le bruit de l'image est grand.
+
+#### Bruit gaussien
+
+![](output/lena_gaussien.png)
+
+#### Debruitage
+
+On test dans cette partie le debruitage de ces bruits via l'ensembles des méthodes que nous avons vu dans les précedents TP.
+
 ![](output/lena_poivre_sel_del_noise_square_3.png)
 ![](output/lena_poivre_sel_del_noise_square_5.png)
 ![](output/lena_poivre_sel_del_noise_square_8.png)
@@ -84,3 +100,42 @@ La méthode du gradient permet de detecter les contours à la fois verticaux, ho
 ![](output/lena_gaussien_del_noise_square_3.png)
 ![](output/lena_gaussien_del_noise_square_5.png)
 ![](output/lena_gaussien_del_noise_square_8.png)
+
+##### Taille 3
+
+Distance euclidienne image originale/image debruitée
+
+|                            | Poivre-sel | Gaussien |
+|----------------------------|------------|----------|
+| Filtre passe-bas moyenneur |            |          |
+| Filtre passe-bas gaussien  |            |          |
+| Filtre médian              |            |          |
+| Ouverture                  |            |          |
+| Fermeture                  |            |          |
+
+##### Taille 5
+
+Distance euclidienne image originale/image debruitée
+
+|                            | Poivre-sel | Gaussien |
+|----------------------------|------------|----------|
+| Filtre passe-bas moyenneur |            |          |
+| Filtre passe-bas gaussien  |            |          |
+| Filtre médian              |            |          |
+| Ouverture                  |            |          |
+| Fermeture                  |            |          |
+
+##### Taille 8
+
+Distance euclidienne image originale/image debruitée
+
+|                            | Poivre-sel | Gaussien |
+|----------------------------|------------|----------|
+| Filtre passe-bas moyenneur |            |          |
+| Filtre passe-bas gaussien  |            |          |
+| Filtre médian              |            |          |
+| Ouverture                  |            |          |
+| Fermeture                  |            |          |
+
+
+**Remarques** Filtre impulsionnel puis filtre median : on retrouve l'image

@@ -136,18 +136,20 @@ saveas(f, "output/cameraman_gradient.png");
 
 ## 1. Bruit poivre et sel
 
-lena_bruit_1 = num2cell(lena);
-values = {0, 255};
-p = 0.20;
-lena_to_change=rand(size(lena,1),size(lena,2))<p;
-lena_bruit_1(lena_to_change)= values{randi([1, 2], 1)};
+%lena_bruit_1 = num2cell(lena);
+%values = {0, 255};
+p = 0.05;
+lena_bruit_1 = imnoise(lena,'salt & pepper',p);
+%lena_to_change=rand(size(lena,1),size(lena,2))<p;
+%lena_bruit_1(lena_to_change)= values{randi([1, 2], size(lena))};
+%lena_bruit_1 = cell2mat(lena_bruit_1)
 
 figure;
 subplot(1, 2, 1);
 imshow(lena);
 title("Lena original");
 f = subplot(1, 2, 2);
-imshow(cell2mat(lena_bruit_1));
+imshow(lena_bruit_1);
 title("Lena bruit 1");
 
 saveas(f, "output/lena_poivre_sel.png");
