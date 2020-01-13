@@ -93,6 +93,14 @@ Plus la valeur de cette probabilité est grande plus on a de valeurs changées d
 
 On test dans cette partie le debruitage de ces bruits via l'ensembles des méthodes que nous avons vu dans les précedents TP.
 
+![](output/lena_poivre_sel_del_noise_square_3.png)
+![](output/lena_poivre_sel_del_noise_square_5.png)
+![](output/lena_poivre_sel_del_noise_square_8.png)
+
+![](output/lena_gaussien_del_noise_square_3.png)
+![](output/lena_gaussien_del_noise_square_5.png)
+![](output/lena_gaussien_del_noise_square_8.png)
+
 ##### Taille 3
 
 Distance euclidienne image originale/image debruitée
@@ -117,7 +125,7 @@ Distance euclidienne image originale/image debruitée
 | Ouverture                  |            |          |
 | Fermeture                  |            |          |
 
-##### Taille 6
+##### Taille 8
 
 Distance euclidienne image originale/image debruitée
 
