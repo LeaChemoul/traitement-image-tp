@@ -76,3 +76,29 @@ Le filtre passe haut du TP3 nous permettait de detecter les contours d'une image
 La méthode du gradient permet de detecter les contours à la fois verticaux, horizontaux et diagonaux. Il fonctionne comme la combinaison des masques du TP3.
 
 ### 3 - Débruitage
+
+#### Bruit poivre et sel
+
+![](output/lena_poivre_sel.png)
+
+On va par exemple pour 20% des valeurs de notre matrice (probabilité = 0,20) décider de changer en 0 (poivre) ou en 255 (sel) notre valeur.
+
+Plus la valeur de cette probabilité est grande plus on a de valeurs changées donc le bruit de l'image est grand.
+
+#### Bruit gaussien
+
+![](output/lena_gaussien.png)
+
+#### Debruitage
+
+On test dans cette partie le debruitage de ces bruits via l'ensembles des méthodes que nous avons vu dans les précedents TP.
+
+Distance euclidienne image originale/image debruitée
+
+|                            | Poivre-sel | Gaussien |
+|----------------------------|------------|----------|
+| Filtre passe-bas moyenneur |            |          |
+| Filtre passe-bas gaussien  |            |          |
+| Filtre médian              |            |          |
+| Ouverture                  |            |          |
+| Fermeture                  |            |          |
