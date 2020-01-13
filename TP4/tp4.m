@@ -152,5 +152,17 @@ title("Lena bruit 1");
 
 saveas(f, "output/lena_poivre_sel.png");
 
+## Filtre passe bas
+
+function mean_blur(img, mask_size, shape = 'same')
+	mask = (1/(mask_size * mask_size)) * ones([mask_size, mask_size])
+	img_conv = uint8(conv2(img, mask, shape));
+endfunction
+
+function gaussian_blur(img, mask_size, sigma = 20, shape = 'same')
+	mask = fspecial("gaussian", [mask_size, mask_size], sigma)
+	img_conv = uint8(conv2(img, mask, shape));
+endfunction
+
 % Comment the following line to keep the images displayed during execution.
 %close all hidden;
