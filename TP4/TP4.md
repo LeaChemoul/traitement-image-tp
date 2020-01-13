@@ -93,6 +93,8 @@ Plus la valeur de cette probabilité est grande plus on a de valeurs changées d
 
 On test dans cette partie le debruitage de ces bruits via l'ensembles des méthodes que nous avons vu dans les précedents TP.
 
+##### Taille 3
+
 Distance euclidienne image originale/image debruitée
 
 |                            | Poivre-sel | Gaussien |
@@ -102,3 +104,30 @@ Distance euclidienne image originale/image debruitée
 | Filtre médian              |            |          |
 | Ouverture                  |            |          |
 | Fermeture                  |            |          |
+
+##### Taille 5
+
+Distance euclidienne image originale/image debruitée
+
+|                            | Poivre-sel | Gaussien |
+|----------------------------|------------|----------|
+| Filtre passe-bas moyenneur |            |          |
+| Filtre passe-bas gaussien  |            |          |
+| Filtre médian              |            |          |
+| Ouverture                  |            |          |
+| Fermeture                  |            |          |
+
+##### Taille 6
+
+Distance euclidienne image originale/image debruitée
+
+|                            | Poivre-sel | Gaussien |
+|----------------------------|------------|----------|
+| Filtre passe-bas moyenneur |            |          |
+| Filtre passe-bas gaussien  |            |          |
+| Filtre médian              |            |          |
+| Ouverture                  |            |          |
+| Fermeture                  |            |          |
+
+
+**Remarques** Filtre impulsionnel puis filtre median : on retrouve l'image
