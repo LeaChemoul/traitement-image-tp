@@ -87,6 +87,15 @@ saveas(f, "output/cameraman_square_diamond_disk_5.png");
 cameraman_fermeture = imerode(cameraman_dilate_square_3, strel("square", 3), 'same');
 cameraman_ouverture = imdilate(cameraman_erode_square_3, strel("square", 3), 'same');
 
+# closed/opened
+
+function [im_closed, im_opened] = close_open(im, strel_size, strel_shape = "square", shape = "same")
+  im_closed = 255 - imerode(imdilate(255-im, strel(strel_shape, strel_size), shape), strel(strel_shape, strel_size), 'same');
+  im_opened = 255 - imdilate(imerode(255-im, strel(strel_shape, strel_size), shape), strel(strel_shape, strel_size), 'same');
+endfunction
+
+[cameraman_fermeture, cameraman_ouverture] = close_open(cameraman, 3);
+
 figure;
 subplot(1, 3, 1);
 imshow(cameraman);
@@ -99,10 +108,21 @@ imshow(cameraman_ouverture);
 title("Cameraman opened");
 
 saveas(f, "output/cameraman_closed_opened.png");
+close all hidden;
 
 # 2 - Contours
 
+cameraman_gradient = imdilate(cameraman, strel("square", 3), 'same') - imerode(cameraman, strel("square", 3), 'same');
 
+figure;
+subplot(1, 2, 1);
+imshow(cameraman);
+title("Cameraman original");
+subplot(1, 2, 2);
+imshow(cameraman_gradient);
+title("Cameramn gradient");
+
+saveas(f, "output/cameraman_gradient.png");
 
 # 3 - Débruitage
 
