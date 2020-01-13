@@ -76,3 +76,11 @@ Le filtre passe haut du TP3 nous permettait de detecter les contours d'une image
 La méthode du gradient permet de detecter les contours à la fois verticaux, horizontaux et diagonaux. Il fonctionne comme la combinaison des masques du TP3.
 
 ### 3 - Débruitage
+
+![](output/lena_poivre_sel_del_noise_square_3.png)
+![](output/lena_poivre_sel_del_noise_square_5.png)
+![](output/lena_poivre_sel_del_noise_square_8.png)
+
+![](output/lena_gaussien_del_noise_square_3.png)
+![](output/lena_gaussien_del_noise_square_5.png)
+![](output/lena_gaussien_del_noise_square_8.png)
