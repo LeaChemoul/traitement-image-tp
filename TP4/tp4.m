@@ -124,7 +124,7 @@ figure;
 subplot(1, 2, 1);
 imshow(cameraman);
 title("Cameraman original");
-subplot(1, 2, 2);
+f = subplot(1, 2, 2);
 imshow(cameraman_gradient);
 title("Cameramn gradient");
 
