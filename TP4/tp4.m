@@ -9,52 +9,83 @@ pkg load image
 [cameraman, map_cameraman, alpha_cameraman] = imread("data/cameraman.jpg");
 
 function [im_erode, im_dilate] = erode_dilate(im, strel_size, strel_shape = "square", shape = "same")
-	im_erode = 255-imerode(255-im, strel(strel_shape, strel_size), shape);
-	im_dilate = 255-imdilate(255-im, strel(strel_shape, strel_size), shape);
+	if (strcmp(strel_shape, "disk") == 1)
+		im_erode = 255-imerode(255-im, strel(strel_shape, strel_size, 0), shape);
+		im_dilate = 255-imdilate(255-im, strel(strel_shape, strel_size, 0), shape);
+	else
+		im_erode = 255-imerode(255-im, strel(strel_shape, strel_size), shape);
+		im_dilate = 255-imdilate(255-im, strel(strel_shape, strel_size), shape);
+	endif
 endfunction
 
-[cameraman_erode, cameraman_dilate] = erode_dilate(cameraman, 3);
+[cameraman_erode_square_3, cameraman_dilate_square_3] = erode_dilate(cameraman, 3);
 
 figure;
 subplot(1, 3, 1);
 imshow(cameraman);
 title("Cameraman original");
 subplot(1, 3, 2);
-imshow(cameraman_erode);
+imshow(cameraman_erode_square_3);
 title("Cameramn eroded");
 f = subplot(1, 3, 3);
-imshow(cameraman_dilate);
+imshow(cameraman_dilate_square_3);
 title("Cameraman dilated");
-saveas(f, "output/cameraman_erode_dilate.png");
+saveas(f, "output/cameraman_erode_dilate_square_3.png");
 
 # Impact of strel size
 
-[cameraman_erode_5, cameraman_dilate_5] = erode_dilate(cameraman, 5);
-[cameraman_erode_10, cameraman_dilate_10] = erode_dilate(cameraman, 10);
+[cameraman_erode_square_5, cameraman_dilate_square_5] = erode_dilate(cameraman, 5);
+[cameraman_erode_square_10, cameraman_dilate_square_10] = erode_dilate(cameraman, 10);
 
 figure;
 subplot(3, 2, 1);
-imshow(cameraman_erode);
+imshow(cameraman_erode_square_3);
 title("Cameramn eroded 3x3");
 subplot(3, 2, 2);
-imshow(cameraman_dilate);
+imshow(cameraman_dilate_square_3);
 title("Cameraman dilated 3x3");
 subplot(3, 2, 3);
-imshow(cameraman_erode_5);
+imshow(cameraman_erode_square_5);
 title("Cameramn eroded 5x5");
 subplot(3, 2, 4);
-imshow(cameraman_dilate_5);
+imshow(cameraman_dilate_square_5);
 title("Cameraman dilated 5x5");
 subplot(3, 2, 5);
-imshow(cameraman_erode_10);
+imshow(cameraman_erode_square_10);
 title("Cameramn eroded 10x10");
 f = subplot(3, 2, 6);
-imshow(cameraman_dilate_10);
+imshow(cameraman_dilate_square_10);
 title("Cameraman dilated 10x10");
-saveas(f, "output/cameraman_erode_dilate_3_5_10.png");
+saveas(f, "output/cameraman_erode_dilate_square_3_5_10.png");
 
-cameraman_fermeture = imerode(cameraman_dilate, strel("square", 3), 'same');
-cameraman_ouverture = imdilate(cameraman_erode, strel("square", 3), 'same');
+# Impact of strel shape
+
+[cameraman_erode_diamond_5, cameraman_dilate_diamond_5] = erode_dilate(cameraman, 5, "diamond");
+[cameraman_erode_disk_5, cameraman_dilate_disk_5] = erode_dilate(cameraman, 5, "disk");
+
+figure;
+subplot(3, 2, 1);
+imshow(cameraman_erode_square_5);
+title("Cameraman, eroded (square, 5x5)");
+subplot(3, 2, 2);
+imshow(cameraman_dilate_square_5);
+title("Cameraman, dilated (square, 5x5)");
+subplot(3, 2, 3);
+imshow(cameraman_erode_diamond_5);
+title("Cameraman, eroded (diamond, 5x5)");
+subplot(3, 2, 4);
+imshow(cameraman_dilate_diamond_5);
+title("Cameraman, dilated (diamond, 5x5)");
+subplot(3, 2, 5);
+imshow(cameraman_erode_disk_5);
+title("Cameraman, eroded (disk, 5x5)");
+subplot(3, 2, 6);
+imshow(cameraman_dilate_disk_5);
+title("Cameraman, dilated (disk, 5x5)");
+saveas(f, "output/cameraman_square_diamond_disk_5.png");
+
+cameraman_fermeture = imerode(cameraman_dilate_square_3, strel("square", 3), 'same');
+cameraman_ouverture = imdilate(cameraman_erode_square_3, strel("square", 3), 'same');
 
 figure;
 subplot(1, 3, 1);
