@@ -37,7 +37,7 @@ function [transformed, magnitude, phase] = ftcomponent(img, maxMagnitude = false
 endfunction
 
 function [min, max] = computeRange(img)
-  fftImage = fourier(img));
+  fftImage = fourier(img);
   amplitudeImage = abs(fftImage);
   min = min(min(amplitudeImage))
   max = max(max(amplitudeImage))
@@ -147,7 +147,7 @@ saveas(f, "output/manh_beach_image.png");
 
 # 3 - Filtrage
 
-%lena_fft(255:260, 255:261) = 0;
+# Filtre passe-haut
 
 function i = removeCircle(img, x, y, radius)
 	i = zeros(size(img));
@@ -166,18 +166,6 @@ function i = removeCircle(img, x, y, radius)
 	endfor
 endfunction
 
-%{
-radius = 2.5;
-for x = 255:260
-	for y = 255:261
-		distance = sqrt((x - 257.5)^2 + (y - 258)^2);
-		if (distance < radius)
-			lena_fft(x, y) = 0;
-		endif
-	endfor
-endfor
-%}
-
 lena_fft_circle = removeCircle(lena_fft, 257.5, 258, 100);
 lena_inv = ifft2(lena_fft_circle);
 
@@ -187,11 +175,46 @@ figure;
 subplot(1, 2, 1);
 imagesc(abs(lena_fft_circle));
 colorbar();
-title("Lena FFT Mask");
-subplot(1, 2, 2);
+title("Lena FFT Mask (High-Pass Filter)");
+f = subplot(1, 2, 2);
 imagesc(abs(lena_inv));
 colorbar();
-title("Lena inverted");
+title("Lena inverted from Fourier Transform");
+saveas(f, "output/lena_high_pass_filter.png");
+
+# Filtre passe-bas
+
+function i = iremoveCircle(img, x, y, radius)
+	i = zeros(size(img));
+	xmin = floor(x - radius);
+	xmax = ceil(x + radius);
+	ymin = floor(y - radius);
+	ymax = ceil(y + radius);
+	for x1 = xmin:xmax
+		for y1 = ymin:ymax
+			distance = sqrt((x1 - x)^2 + (y1 - y)^2);
+			if distance <= radius
+				i(x1, y1) = img(x1, y1);
+			endif
+		endfor
+	endfor
+endfunction
+
+lena_fft_icircle = iremoveCircle(lena_fft, 257.5, 258, 50);
+lena_inv = ifft2(lena_fft_icircle);
+
+lena_fft_icircle = arrayfun(@choosePixel, lena_fft_icircle);
+
+figure;
+subplot(1, 2, 1);
+imagesc(abs(lena_fft_icircle));
+colorbar();
+title("Lena FFT Mask (Low-Pass Filter)");
+f = subplot(1, 2, 2);
+imagesc(abs(lena_inv));
+colorbar();
+title("Lena inverted from Fourier Transform");
+saveas(f, "output/lena_low_pass_filter.png");
 
 % Comment the following line to keep the images displayed during execution.
 %close all hidden;
