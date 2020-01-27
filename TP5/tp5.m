@@ -36,6 +36,13 @@ function [transformed, magnitude, phase] = ftcomponent(img, maxMagnitude = false
 	phase = arg(transformed);
 endfunction
 
+function [min, max] = computeRange(img)
+  fftImage = fourier(img));
+  amplitudeImage = abs(fftImage);
+  min = min(min(amplitudeImage))
+  max = max(max(amplitudeImage))
+endfunction
+
 [sinus_fft, magnitude_sinus, arg_sinus] = ftcomponent(sinus, true);
 [monde_fft, magnitude_monde, arg_monde] = ftcomponent(monde, true);
 [dominos_fft, magnitude_dominos, arg_dominos] = ftcomponent(dominos, true);

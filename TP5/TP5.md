@@ -32,6 +32,8 @@ Beach : Sur le module de cette image on reconnait bien :
 
 ![](output/beach_fft.png)
 
+#### Combiner deux images
+
 La phase permet de mettre en évidence le décalage entre les fréquences, cela permet de déterminer à peu près où se situe notre image.
 Le module quant à lui indique l'intensité.
 Nous combinons le module de Manhattan ainsi que la phase de Beach puis nous appliquons la transformée de Fourier inverse afin de retrouver l'image associée. Voici ce que nous obtenons :
@@ -45,8 +47,13 @@ Nous pouvons bien :
 ### 3 - Filtrage
 
 
-Filtrage passe-bas : seules les basses fréquences sont conservées
+**Filtrage passe-haut : seules les hautes fréquences sont conservées**
+
+Le module nous permet de mettre en évidence les pointes lumineuses. Afin d'effectuer un filtre passe-haut, nous allons exclure les points du centre.
+Cette méthode nous permet d'accentuer les contours et les détails de l’image.
 
 
 
-Filtrage passe-haut : seules les basses fréquences sont conservées
+**Filtrage passe-bas : seules les basses fréquences sont conservées**
+
+Cette méthode nous permet de diminuer le bruit mais atténue par la même occasion les détails de l’image ét érode les contours (donc on obtient un flou plus prononcé)
