@@ -93,49 +93,57 @@ Plus la valeur de cette probabilité est grande plus on a de valeurs changées d
 
 On test dans cette partie le debruitage de ces bruits via l'ensembles des méthodes que nous avons vu dans les précedents TP.
 
+##### Taille 3
+
 ![](output/lena_poivre_sel_del_noise_square_3.png)
-![](output/lena_poivre_sel_del_noise_square_5.png)
-![](output/lena_poivre_sel_del_noise_square_8.png)
 
 ![](output/lena_gaussien_del_noise_square_3.png)
-![](output/lena_gaussien_del_noise_square_5.png)
-![](output/lena_gaussien_del_noise_square_8.png)
 
-##### Taille 3
 
 Distance euclidienne image originale/image debruitée
 
-|                            | Poivre-sel | Gaussien |
-|----------------------------|------------|----------|
-| Filtre passe-bas moyenneur |            |          |
-| Filtre passe-bas gaussien  |            |          |
-| Filtre médian              |            |          |
-| Ouverture                  |            |          |
-| Fermeture                  |            |          |
+|                            |   Poivre-sel   |   Gaussien   |
+|----------------------------|----------------|--------------|
+| Filtre passe-bas moyenneur |     2415       |    1948      |
+| Filtre passe-bas gaussien  |     2416       |    1948      |
+| Filtre médian              |     1374       |    2057      |
+| Ouverture                  |     251        |    670       |
+| Fermeture                  |     2739       |    5076      |
 
 ##### Taille 5
 
+![](output/lena_poivre_sel_del_noise_square_5.png)
+
+![](output/lena_gaussien_del_noise_square_5.png)
+
+
 Distance euclidienne image originale/image debruitée
 
-|                            | Poivre-sel | Gaussien |
-|----------------------------|------------|----------|
-| Filtre passe-bas moyenneur |            |          |
-| Filtre passe-bas gaussien  |            |          |
-| Filtre médian              |            |          |
-| Ouverture                  |            |          |
-| Fermeture                  |            |          |
+|                            |   Poivre-sel   |   Gaussien   |
+|----------------------------|----------------|--------------|
+| Filtre passe-bas moyenneur |      2308      |    2205      |
+| Filtre passe-bas gaussien  |      2305      |    2201      |
+| Filtre médian              |      1816      |    2096      |
+| Ouverture                  |      167       |    495       |
+| Fermeture                  |      3931      |    6460      |
 
 ##### Taille 8
 
+![](output/lena_poivre_sel_del_noise_square_8.png)
+
+![](output/lena_gaussien_del_noise_square_8.png)
+
 Distance euclidienne image originale/image debruitée
 
-|                            | Poivre-sel | Gaussien |
-|----------------------------|------------|----------|
-| Filtre passe-bas moyenneur |            |          |
-| Filtre passe-bas gaussien  |            |          |
-| Filtre médian              |            |          |
-| Ouverture                  |            |          |
-| Fermeture                  |            |          |
+|                            |   Poivre-sel   |   Gaussien   |
+|----------------------------|----------------|--------------|
+| Filtre passe-bas moyenneur |     2476       |    2610      |
+| Filtre passe-bas gaussien  |     2467       |    2601      |
+| Filtre médian              |     2244       |    2356      |
+| Ouverture                  |     83         |    415       |
+| Fermeture                  |     5640       |    7223      |
 
 
-**Remarques** Filtre impulsionnel puis filtre median : on retrouve l'image
+**Remarques**
+- Avec un filtre impulsionnel puis filtre median on retrouve l'image d'origine
+- Une taille de filtre trop grande dénature l'image
