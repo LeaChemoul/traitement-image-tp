@@ -231,9 +231,9 @@ function display_all_del_noise(img_original, img_noise, img_name, filename, size
 	saveas(f, ["output/" filename "_del_noise_" strel_shape "_" num2str(size) ".png"]);
 endfunction
 
-display_all_del_noise(lena, cell2mat(lena_bruit_1), "Lena", "lena_poivre_sel", 3, 10, 'square');
-display_all_del_noise(lena, cell2mat(lena_bruit_1), "Lena", "lena_poivre_sel", 5, 10, 'square');
-display_all_del_noise(lena, cell2mat(lena_bruit_1), "Lena", "lena_poivre_sel", 8, 10, 'square');
+display_all_del_noise(lena, lena_bruit_1, "Lena", "lena_poivre_sel", 3, 10, 'square');
+display_all_del_noise(lena, lena_bruit_1, "Lena", "lena_poivre_sel", 5, 10, 'square');
+display_all_del_noise(lena, lena_bruit_1, "Lena", "lena_poivre_sel", 8, 10, 'square');
 
 display_all_del_noise(lena, lena_bruit_2, "Lena", "lena_gaussien", 3, 10, 'square');
 display_all_del_noise(lena, lena_bruit_2, "Lena", "lena_gaussien", 5, 10, 'square');
