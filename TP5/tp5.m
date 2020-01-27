@@ -91,15 +91,15 @@ saveas(f, "output/fourier_components.png");
 
 # 2 - Module et phase
 
-manhattan_fft = fourier(manhattan);
-beach_fft = fourier(beach);
+[manh_fft, magnitude_manh, arg_manh] = ftcomponent(manhattan, true);
+[beach_ff, magnitude_beach, arg_beach] = ftcomponent(beach, true);
 
 figure;
 subplot(1, 2, 1);
 imshow(manhattan);
 title("Manhattan");
 f = subplot(1, 2, 2);
-imagesc(abs(manhattan_fft));
+imagesc(magnitude_manh);
 title("Transformation de Fourier de Manhattan");
 saveas(f, "output/manhattan_fft.png");
 
@@ -108,19 +108,19 @@ subplot(1, 2, 1);
 imshow(beach);
 title("Beach");
 f = subplot(1, 2, 2);
-imagesc(abs(beach_fft));
+imagesc(magnitude_beach);
 title("Transformation de Fourier de Beach");
 saveas(f, "output/beach_fft.png");
 
 
-function combinated = combinate(img1, img2)
-    [ft_img1, mod_img1, phase_img1] = ftcomponent(img1);
-    [ft_img2, mod_img2, phase_img2] = ftcomponent(img2);
+function combinated = combinate(img1, img2, scale)
+    [ft_img1, mod_img1, phase_img1] = ftcomponent(img1, scale);
+    [ft_img2, mod_img2, phase_img2] = ftcomponent(img2, scale);
     combinated = mod_img1.*exp(i*phase_img2);   
 endfunction
 
-combinated_manh_beach_fft = combinate(manhattan, beach);
-combinated_manh_beach_image = ifft2(combinated_manh_beach_fft);
+combinated_manh_beach_fft = combinate(manhattan, beach, true);
+combinated_manh_beach_image = ifft2(combinate(manhattan, beach, false));
 
 figure;
 subplot(2, 2, 1);
