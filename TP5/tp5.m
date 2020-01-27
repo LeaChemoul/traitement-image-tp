@@ -132,7 +132,6 @@ title("Beach");
 f = subplot(2, 2, 3);
 imagesc(abs(combinated_manh_beach_fft));
 title("Combinaison of manhattan and beach: Fourier");
-saveas(f, "output/manh_beach_fourier.png");
 f = subplot(2, 2, 4);
 imagesc(abs(combinated_manh_beach_image));
 title("Combinaison of manhattan and beach: Image");
