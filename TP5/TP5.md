@@ -14,15 +14,15 @@ L'image ci-dessous montre pour chaque image son module et sa phase après transf
 
 ![Module et phases de différentes images avec une transformation de Fourier](output/fourier_components.png)
 
-On peut voir que le module nous donne en effet beaucoup d'information sur les bords des images. Par exemple, dans l'image "*dominos*", nous observons une diagonal partant d'en haut à droite et allant en bas à gauche (la suite de dominos en arrière plan). On retrouve cette diagonal dans le module, avec une ligne inversée en jaune.
+On peut voir que le module nous donne en effet beaucoup d'information sur les bords des images. Par exemple, dans l'image "*dominos*", nous observons une diagonal partant d'en haut à droite et allant en bas à gauche (la suite de dominos en arrière-plan). On retrouve cette diagonal dans le module, avec une ligne inversée en jaune.
 
-Inversement, on observe que le module de "*monde*" n'a pas de ligne distinctes. En effet, comme les contours des continents ne sont pas constants, il est normal d'avoir un module formant un nuage de points plutôt que de voir apparaître des lignes.
+Inversement, on observe que le module de "*monde*" n'a pas de ligne distincte. En effet, comme les contours des continents ne sont pas constants, il est normal d'avoir un module formant un nuage de points plutôt que de voir apparaître des lignes.
 
-Pour terminer, l'image "*lena*" est une fusion des deux image précédant : la diagonale crée par le contour du chapeau est distinguable sur le module, mais on peut également y voir un nuage de points au centre, formé par la compléxité des contours de l'image originale.
+Pour terminer, l'image "*lena*" est une fusion des deux images précédant : la diagonale crée par le contour du chapeau est distinguable sur le module, mais on peut également y voir un nuage de points au centre, formé par la complexité des contours de l'image originale.
 
 ### 2 - Module et phase
 
-Manhattan : Sur le module de cette image on reconnait bien les deux diagonales caractéristiques propres à l'image et à son décors aux diagonales prononcées (buildings rectangulaires penchés).  
+Manhattan : Sur le module de cette image on reconnait bien les deux diagonales caractéristiques propres à l'image et à son décor aux diagonales prononcées (buildings rectangulaires penchés).  
 
 ![](output/manhattan_fft.png)
 
@@ -52,16 +52,16 @@ Nous pouvons bien :
 Le module nous permet de mettre en évidence les pointes lumineuses. Afin d'effectuer un filtre passe-haut, nous allons exclure les points du centre.
 Cette méthode nous permet d'accentuer les contours et les détails de l’image.
 
-![](output/lena_low_pass_filter.png)
+![](output/lena_high_pass_filter.png)
 
 **Filtrage passe-bas : seules les basses fréquences sont conservées**
 
-Cette méthode nous permet de diminuer le bruit mais atténue par la même occasion les détails de l’image ét érode les contours (donc on obtient un flou plus prononcé)
+Cette méthode nous permet de diminuer le bruit mais atténue par la même occasion les détails de l’image et érode les contours (donc on obtient un flou plus prononcé)
 
-![](output/lena_high_pass_filter.png)
+![](output/lena_low_pass_filter.png)
 
 **Comparaison avec le débruitage du TP 4**
 
 ![](../TP4/output/lena_poivre_sel_del_noise_square_3.png)
 
-![](../TP4/lena_gaussien_del_noise_square_3.png)
+![](../TP4/output/lena_gaussien_del_noise_square_3.png)

@@ -87,6 +87,8 @@ Plus la valeur de cette probabilité est grande plus on a de valeurs changées d
 
 #### Bruit gaussien
 
+On applique maintenant un bruit gaussien, avec μ=0 et σ=10.
+
 ![](output/lena_gaussien.png)
 
 #### Debruitage
@@ -143,6 +145,13 @@ Distance euclidienne image originale/image debruitée
 | Ouverture                  |     83         |    415       |
 | Fermeture                  |     5640       |    7223      |
 
+##### Conclusion
+
+Les résultats ci-dessus met en valeur les techniques de débruitage les plus efficace. On remarque que le bruit poivre-sel est retiré efficacement avec le flou médian (en particulier en taille 3 et 5). Le bruit Gaussien est lui débruité avec le flou Gaussien.
+
+En analysant de plus près les distances obtenues, on remarque que l'image débruité avec le filtre ouvert est toujours le plus faible, laissant penser que ce filtre est le plus efficace de tous. Cependant, en regardant les résultats obtenus, on se rend vite compte que la distance euclidienne n'est pas un critère de performance de bruitage acceptable.
+
+Pour finir, en analysant les résultats selon les tailles, on remarque que les taille 3 et 5 sont celles donnant les meilleurs résultats, tandis que la taille 8 floute légèrement trop les contours. Nous conseillons ainsi d'utiliser les tailles 3, 4 ou 5 dans le cas où nous souhaitons débruité une image bruitée poivre-sel ou Gaussien avec des paramètres de bruits comparable à ceux utilisés dans le cadre de ce TP.
 
 **Remarques**
 - Avec un filtre impulsionnel puis filtre median on retrouve l'image d'origine
