@@ -5,7 +5,7 @@
 > * Léa CHEMOUL
 > * Valentin Berger
 
-## TP3 - Filtres non linéaires
+## TP4 - Filtres non linéaires
 
 ### 1 - Fermeture
 
