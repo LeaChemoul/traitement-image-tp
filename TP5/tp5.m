@@ -96,6 +96,33 @@ imagesc(abs(beach_fft));
 title("Transformation de Fourier de Beach");
 saveas(f, "output/beach_fft.png");
 
+
+function combinated = combinate(img1, img2)
+    [ft_img1, mod_img1, phase_img1] = ftcomponent(img1);
+    [ft_img2, mod_img2, phase_img2] = ftcomponent(img2);
+    combinated = mod_img1.*exp(i*phase_img2);   
+endfunction
+
+combinated_manh_beach_fft = combinate(manhattan, beach);
+combinated_manh_beach_image = ifft2(combinated_manh_beach_fft);
+
+figure;
+subplot(2, 2, 1);
+imshow(manhattan);
+title("Manhattan");
+subplot(2, 2, 2);
+imshow(beach);
+title("Beach");
+f = subplot(2, 2, 3);
+imagesc(abs(combinated_manh_beach_fft));
+title("Combinaison of manhattan and beach: Fourier");
+saveas(f, "output/manh_beach_fourier.png");
+f = subplot(2, 2, 4);
+imagesc(abs(combinated_manh_beach_image));
+title("Combinaison of manhattan and beach: Image");
+saveas(f, "output/manh_beach_image.png");
+
+
 # 3 - Filtrage
 
 
