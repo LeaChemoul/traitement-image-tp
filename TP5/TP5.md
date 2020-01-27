@@ -52,8 +52,16 @@ Nous pouvons bien :
 Le module nous permet de mettre en évidence les pointes lumineuses. Afin d'effectuer un filtre passe-haut, nous allons exclure les points du centre.
 Cette méthode nous permet d'accentuer les contours et les détails de l’image.
 
-
+![](output/lena_low_pass_filter.png)
 
 **Filtrage passe-bas : seules les basses fréquences sont conservées**
 
 Cette méthode nous permet de diminuer le bruit mais atténue par la même occasion les détails de l’image ét érode les contours (donc on obtient un flou plus prononcé)
+
+![](output/lena_high_pass_filter.png)
+
+**Comparaison avec le débruitage du TP 4**
+
+![](../TP4/output/lena_poivre_sel_del_noise_square_3.png)
+
+![](../TP4/lena_gaussien_del_noise_square_3.png)
