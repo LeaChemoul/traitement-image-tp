@@ -216,5 +216,48 @@ colorbar();
 title("Lena inverted from Fourier Transform");
 saveas(f, "output/lena_low_pass_filter.png");
 
+
+## Bruit poivre et sel
+
+p = 0.05;
+lena_bruit_1 = imnoise(lena,'salt & pepper',p);
+
+## Bruit Gaussien
+
+lena_bruit_2 = lena;
+mu = 0;
+var = 10;
+X = mu + randn(size(lena,1), size(lena,2))*var;
+lena_bruit_2 = lena_bruit_2 + X;
+
+## Debruitage
+
+function distance = euclidean_distance_img(img1, img2)
+	distance = sqrt(sum((img1(:) - img2(:)).^2));
+endfunction
+
+function img = delNoise(original, noise)
+  [img_fft, magnitude_img, arg_img] = ftcomponent(noise, true);
+  img_fft_icircle = iremoveCircle(img_fft, 257.5, 258, 65);
+  img_inv = ifft2(img_fft_icircle);
+
+  img_fft_icircle = arrayfun(@choosePixel, img_fft_icircle);
+
+  figure;
+  subplot(1, 2, 1);
+  imshow(noise);
+  colorbar();
+  title("Noise image");
+  f = subplot(1, 2, 2);
+  imagesc(abs(img_inv));
+  text(0, 580, ["Euclidean distance: " num2str(euclidean_distance_img(original, abs(img_inv)))]);
+  colorbar();
+  title("Image inverted from Fourier Transform");
+  saveas(f, "output/del_noise_low_pass_filter.png");
+endfunction
+
+delNoise(lena, lena_bruit_1);
+delNoise(lena, lena_bruit_2);
+
 % Comment the following line to keep the images displayed during execution.
 %close all hidden;
