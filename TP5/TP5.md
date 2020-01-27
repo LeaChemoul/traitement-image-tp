@@ -22,9 +22,21 @@ Pour terminer, l'image "*lena*" est une fusion des deux image précédant : la d
 
 ### 2 - Module et phase
 
-La phase permet de mettre en évidence le décalage entre les fréquences, cela permet de determiner à peu près ou se situe notre image.
-Le module quand à lui indique l'intensité.
-Nous combinons le module de Manhattan ainsi que la phase de Beach puis nous appliquons la transfomrée de Fourier inverse afin de retrouver l'image associée. Voici ce que nous obtenons :
+Manhattan : Sur le module de cette image on reconnait bien les deux diagonales caractéristiques propres à l'image et à son décors aux diagonales prononcées (buildings rectangulaires penchés).  
+
+![](output/manhattan_fft.png)
+
+Beach : Sur le module de cette image on reconnait bien :
+- la verticale propre à la démarcation plage/mer ainsi que la barrière en premier plan
+- la diagonale propre à la barrière au centre
+
+![](output/beach_fft.png)
+
+#### Combiner deux images
+
+La phase permet de mettre en évidence le décalage entre les fréquences, cela permet de déterminer à peu près où se situe notre image.
+Le module quant à lui indique l'intensité.
+Nous combinons le module de Manhattan ainsi que la phase de Beach puis nous appliquons la transformée de Fourier inverse afin de retrouver l'image associée. Voici ce que nous obtenons :
 
 ![](output/manh_beach_image.png)
 
@@ -33,3 +45,15 @@ Nous pouvons bien :
 - apercevoir les différences de fréquences propres à Manhattan
 
 ### 3 - Filtrage
+
+
+**Filtrage passe-haut : seules les hautes fréquences sont conservées**
+
+Le module nous permet de mettre en évidence les pointes lumineuses. Afin d'effectuer un filtre passe-haut, nous allons exclure les points du centre.
+Cette méthode nous permet d'accentuer les contours et les détails de l’image.
+
+
+
+**Filtrage passe-bas : seules les basses fréquences sont conservées**
+
+Cette méthode nous permet de diminuer le bruit mais atténue par la même occasion les détails de l’image ét érode les contours (donc on obtient un flou plus prononcé)
