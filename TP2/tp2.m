@@ -88,9 +88,13 @@ M = size(Lena_nb,2)
 contraste_v1 = (max_lena - min_lena)/(max_lena + min_lena)
 contraste_v2 = std_lena
 
-figure;
 Lena_nb_etale = (Lena_nb)*(double)(255/235);
 max(Lena_nb_etale(:))
+
+figure;
+imhist(Lena_nb);
+
+figure;
 imhist(Lena_nb_etale);
 
 # 4 - Égalisation
