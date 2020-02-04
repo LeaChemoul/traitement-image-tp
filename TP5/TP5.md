@@ -5,7 +5,7 @@
 > * Léa CHEMOUL
 > * Valentin Berger
 
-## TP4 - Filtres non linéaires
+## TP5 - Transformée de Fourier
 
 
 ### 1 - Prise en main

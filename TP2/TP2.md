@@ -37,7 +37,7 @@ Voici le résultat obtenu :
 
 Nous remarquons que des contours verts sont encore visibles. Cependant, nous n'allons pas agrandir la plage des filtres de peur d'effacer les chaînes de la balançoire. De plus, nous estimons que l'image de l'arbre sera suffisamment détaillée et verte pour masquer ces contours.
 
-Enfin, pour ajouter l'arbre en arrière-plan, il suffit de superposer les deux images. Pour cela, nous allons créer un "trou" dans l'image de l'arbre, qui est la forme du chat et de la balançoire. Ensuite, nous additionnons l'image de l'arbre avec un trou et cette du chat. Etant donné que la partie transparente de l'image du chat est 0, elle ne modifiera pas l'image de l'arbre, et inversement, l'image du chat ne sera pas modifiée car il sera placé dans un "trou" qui sera des pixels égale à 0.
+Enfin, pour ajouter l'arbre en arrière-plan, il suffit de superposer les deux images. Pour cela, nous allons créer un "trou" dans l'image de l'arbre, qui est la forme du chat et de la balançoire. Ensuite, nous additionnons l'image de l'arbre avec un trou et celle du chat. Etant donné que la partie transparente de l'image du chat est 0, elle ne modifiera pas l'image de l'arbre, et inversement, l'image du chat ne sera pas modifiée car il sera placé dans un "trou" qui sera des pixels égale à 0.
 
 L'opération Matlab est :
 
@@ -87,14 +87,14 @@ On constatera que la méthode 3 est un juste milieu entre les deux autres métho
 
 ### 3 - Dynamique
 Le contraste global calculé est de 1 ce qui est cohérent avec le fait qu'on a un minimum de 0 et un maximum de 1.
-Le contraste calculé a partie de l'écart type est plus précis et plus pertinent.
+Le contraste calculé a partir de l'écart type est plus précis et plus pertinent.
 
 ```
 contraste_v1 = 1
 contraste_v2 =  44.192
 ```
 
-### 3 - Égalisation
+### 4 - Égalisation
 
 Le but de cette partie est dégaliser l'histogramme et d'améliorer le **contraste** de l'image.
 
