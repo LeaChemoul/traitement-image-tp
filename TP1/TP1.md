@@ -29,7 +29,7 @@ Ainsi un pixel mesure 0.087mm de large sur 0.86mm de long.
 
 >  Si ce smarphone est tenu à 30cm de l’œil, cette définition est-elle suffisante?
 
-Dans la première question, on a calculé que la distance minimale entre deux objets (ici des pixels) est de 0.25 cm pour qu'ils soient distinguables. Or, la largeur d'un pixel est de ![](https://latex.codecogs.com/svg.latex?\inline&space;0.008&space;\text{&space;cm},&space;0.086&space;\text{&space;cm}&space;\lt&space;0.0087&space;\text{&space;cm}). Donc les pixels sont distinguables à 30 centimètres de l'utilisateur, donc la définition n'est pas suffisante.
+Dans la première question, on a calculé que la distance minimale entre deux objets (ici des pixels) est de 0.087 cm pour qu'ils soient distinguables. Or, la largeur d'un pixel est de ![](https://latex.codecogs.com/svg.latex?\inline&space;0.086719&space;\text{&space;cm}&space;\leq&space;0.087,&space;0.86&space;\text{&space;cm}&space;\geq&space;0.087&space;\text{&space;cm}). Donc les pixels sont distinguables à 30 centimètres de l'utilisateur, donc la définition est a peu près suffisante.
 
 > En dessous de quelle distance (entre la personne et l’écran) une personne peut-elle distinguer les pixels d’un écran d’ordinateur de 22 pouces avec une définition HD 1080?
 
@@ -56,7 +56,7 @@ Distance minimale écran 50 pouces HD : 198.207588 cm
 Distance minimale écran 55 pouces HD : 218.082062 cm
 ```
 
-On constate que entre 50 et 55 pouces cette définition n'est plus suffisante pour une sitance de plus de 200cm = 2m.
+On constate que entre 50 et 55 pouces cette définition n'est plus suffisante pour une distance de plus de 200cm = 2m.
 
 ```
 Distance minimale écran 50 pouces Ultra HD : 99.103794 cm
@@ -125,7 +125,7 @@ On observe qu'il y a 256 niveaux de gris correspondant à 8 bits.
 
 ### 3 - Échantillonnage
 
-> En utilisant toujours cameraman.jpg, créer en une autre sous-échantillonner avec 2 fois moins de lignes et colonnes.
+> En utilisant toujours cameraman.jpg, créer en une autre sous-échantillonnée avec 2 fois moins de lignes et colonnes.
 
 ```matlab
 cameraman_e2 = cameraman(1:2:size(cameraman)(1), 1:2:size(cameraman)(2));
@@ -188,13 +188,15 @@ En effet, l'image est echantillonnée sans prendre en compte le critère de Shan
 
 On ajoute une information de chrominance (couleurs) au signal de luminance (noir et blanc) Y.
 Les valeurs plus lumineuses sur le channel U mettent en évidence la couleur bleu (chrominance b).
-Les valeurs plus lumineuses sur le channel V met en évidence la couleur rouge (chrominance r).
+Les valeurs plus lumineuses sur le channel V mettent en évidence la couleur rouge (chrominance r).
 L'image finale peut ensuite être reconstituée pixel par pixel à partir des 3 composantes : Y, Cb et Cr (Y, U et V);
 
 La couleur affichée est en noir et blanc mais il faut garder en tête que nous avons :
 - Y = image noir et blanc (luminance)
 - U = image bleue / verte (chrominance Y – Bleu)
 - V = image jaune / rouge (chrominance Y – Rouge)
+
+#### HSV channels
 
 ![](output/pool-channels-hsv.png)
 
