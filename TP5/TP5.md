@@ -62,6 +62,18 @@ Cette méthode nous permet de diminuer le bruit mais atténue par la même occas
 
 **Comparaison avec le débruitage du TP 4**
 
+**Bruit poivre et sel**
+
 ![](../TP4/output/lena_poivre_sel_del_noise_square_3.png)
 
+![](output/del_noise_poivre_sel_low_pass_filter.png)
+
+Ce filtrage passe-bas est très similaire au filtre gaussien du TP4 et ne permet pas d'enlever totalement le bruit. Un filtrage plus grand risquerait de flouter trop l'image. Le filtre médian reste le plus efficace afin de supprimer du bruit ponctuel comme le bruit poivre et sel.
+
+**Bruit gaussien**
+
 ![](../TP4/output/lena_gaussien_del_noise_square_3.png)
+
+![](output/del_noise_low_pass_filter.png)
+
+Ce filtrage passe-bas est très similaire au filtre médian vu au TP4. L'image obtenue est en effet plus lisse que l'image bruitée même si légèrement plus floue que l'originale.
